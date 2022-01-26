@@ -1,6 +1,4 @@
 USING System.Strings;
-USING System.Math;
-
 NAMESPACE Simatic.Ax.Conversion.Integer
     FUNCTION ToString : STRING[4]
         VAR_INPUT

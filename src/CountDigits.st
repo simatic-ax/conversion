@@ -1,5 +1,3 @@
-USING System.Math;
-
 NAMESPACE Simatic.Ax.Conversion
     FUNCTION CountDigits : INT
         VAR_INPUT
