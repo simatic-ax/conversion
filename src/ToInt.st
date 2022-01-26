@@ -176,4 +176,29 @@ NAMESPACE Simatic.Ax.Conversion.Strings
         END_IF;
     END_FUNCTION
 
+    FUNCTION ToInt : BOOL
+        VAR_INPUT
+            str : STRING;
+        END_VAR
+        VAR_OUTPUT
+            value : ULINT;
+        END_VAR
+        VAR_TEMP
+            _val : ULINT;
+        END_VAR
+        VAR CONSTANT
+            MAX_VAL : ULINT := ULINT#18446744073709551615;
+            MIN_VAL : ULINT := ULINT#0;
+        END_VAR
+
+        ToInt := StringToULint(str := str, value => _val);
+        
+        IF (_val < MIN_VAL) OR (_val > MAX_VAL) THEN
+            value := USINT#0;
+            ToInt := FALSE;
+        ELSE
+            value := _val;
+        END_IF;
+    END_FUNCTION
+
 END_NAMESPACE

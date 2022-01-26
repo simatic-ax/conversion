@@ -227,5 +227,31 @@ NAMESPACE Simatic.Ax.Conversion
             Equal(expected := UDINT#0, actual := val);
         END_METHOD
 
+        {Test}
+        METHOD PUBLIC Test_ULINT
+            VAR_TEMP
+                val : ULINT;
+            END_VAR
+            s := '0';
+            res := Strings.ToInt(str := s, value => val);
+            Equal(expected := TRUE, actual := res);
+            Equal(expected := ULINT#0, actual := val);
+
+            s := '18446744073709551615';
+            res := Strings.ToInt(str := s, value => val);
+            Equal(expected := TRUE, actual := res);
+            Equal(expected := ULINT#18446744073709551615, actual := val);
+
+            s := '+18446744073709551615';
+            res := Strings.ToInt(str := s, value => val);
+            Equal(expected := TRUE, actual := res);
+            Equal(expected := ULINT#18446744073709551615, actual := val);
+        
+            s := '-1';
+            res := Strings.ToInt(str := s, value => val);
+            Equal(expected := FALSE, actual := res);
+            Equal(expected := ULINT#0, actual := val);
+        END_METHOD
+
     END_CLASS
 END_NAMESPACE
