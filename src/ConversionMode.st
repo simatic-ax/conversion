@@ -1,5 +1,5 @@
 NAMESPACE Simatic.Ax.Conversion
     TYPE
-        ConversionMode : WORD (NONE := WORD#16#0000, FORCE_SIGN := WORD#16#0001, FORCE_LEADING_ZEROS := WORD#16#0002) := NONE;
+        ConversionMode : WORD (NONE := WORD#16#0000, FORCE_SIGN := WORD#16#0001) := NONE;
     END_TYPE
 END_NAMESPACE
