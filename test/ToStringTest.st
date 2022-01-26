@@ -67,6 +67,12 @@ NAMESPACE Simatic.Ax.Conversion
             s := AnyIntToString(value := LINT#-9223372036854775808);
             Equal(expected := '-9223372036854775808', actual := s);
             Equal(expected := 20, actual := LengthOf(s));
+
+            // -9223372036854775808
+            s := ULintToString(value := ULINT#18446744073709551615);
+            Equal(expected := '18446744073709551615', actual := s);
+            Equal(expected := 20, actual := LengthOf(s));
+
         END_METHOD
 
         {Test}

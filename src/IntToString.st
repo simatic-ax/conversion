@@ -9,7 +9,7 @@ NAMESPACE Simatic.Ax.Conversion.Integer
         END_VAR
         VAR_TEMP
         END_VAR
-        AnyIntToString(value := value, mode := mode);
+        ToString := AnyIntToString(value := value, mode := mode);
     END_FUNCTION
 
     FUNCTION ToString : STRING[4]
@@ -19,7 +19,7 @@ NAMESPACE Simatic.Ax.Conversion.Integer
         END_VAR
         VAR_TEMP
         END_VAR
-        AnyIntToString(value := value, mode := mode);
+        ToString := AnyIntToString(value := value, mode := mode);
     END_FUNCTION
 
     FUNCTION ToString : STRING[6]
@@ -29,7 +29,7 @@ NAMESPACE Simatic.Ax.Conversion.Integer
         END_VAR
         VAR_TEMP
         END_VAR
-        AnyIntToString(value := value, mode := mode);
+        ToString := AnyIntToString(value := value, mode := mode);
     END_FUNCTION
 
     FUNCTION ToString : STRING[6]
@@ -39,7 +39,7 @@ NAMESPACE Simatic.Ax.Conversion.Integer
         END_VAR
         VAR_TEMP
         END_VAR
-        AnyIntToString(value := value, mode := mode);
+        ToString := AnyIntToString(value := value, mode := mode);
     END_FUNCTION
 
 
@@ -50,7 +50,7 @@ NAMESPACE Simatic.Ax.Conversion.Integer
         END_VAR
         VAR_TEMP
         END_VAR
-        AnyIntToString(value := value, mode := mode);
+        ToString := AnyIntToString(value := value, mode := mode);
     END_FUNCTION
 
     FUNCTION ToString : STRING[11]
@@ -60,7 +60,7 @@ NAMESPACE Simatic.Ax.Conversion.Integer
         END_VAR
         VAR_TEMP
         END_VAR
-        AnyIntToString(value := value, mode := mode);
+        ToString := AnyIntToString(value := value, mode := mode);
     END_FUNCTION
 
     FUNCTION ToString : STRING[20]
@@ -70,6 +70,16 @@ NAMESPACE Simatic.Ax.Conversion.Integer
         END_VAR
         VAR_TEMP
         END_VAR
-        AnyIntToString(value := value, mode := mode);
+        ToString := AnyIntToString(value := value, mode := mode);
+    END_FUNCTION
+
+    FUNCTION ToString : STRING[21]
+        VAR_INPUT
+            value : ULINT;
+            mode : ConversionMode := ConversionMode#NONE;
+        END_VAR
+        VAR_TEMP
+        END_VAR
+        ToString := ULintToString(value := value, mode := mode);
     END_FUNCTION
 END_NAMESPACE
