@@ -1,10 +1,10 @@
 USING System.Strings;
 USING System.Math;
 
-NAMESPACE Simatic.Ax.Conversion
-    FUNCTION SIntToString : STRING[4]
+NAMESPACE Simatic.Ax.Conversion.Integer
+    FUNCTION ToString : STRING[4]
         VAR_INPUT
-            value : DINT;
+            value : SINT;
             mode : ConversionMode := ConversionMode#NONE;
         END_VAR
         VAR_TEMP
@@ -12,7 +12,17 @@ NAMESPACE Simatic.Ax.Conversion
         AnyIntToString(value := value, mode := mode);
     END_FUNCTION
 
-    FUNCTION IntToString : STRING[6]
+    FUNCTION ToString : STRING[4]
+        VAR_INPUT
+            value : USINT;
+            mode : ConversionMode := ConversionMode#NONE;
+        END_VAR
+        VAR_TEMP
+        END_VAR
+        AnyIntToString(value := value, mode := mode);
+    END_FUNCTION
+
+    FUNCTION ToString : STRING[6]
         VAR_INPUT
             value : INT;
             mode : ConversionMode := ConversionMode#NONE;
@@ -22,7 +32,18 @@ NAMESPACE Simatic.Ax.Conversion
         AnyIntToString(value := value, mode := mode);
     END_FUNCTION
 
-    FUNCTION DIntToString : STRING[11]
+    FUNCTION ToString : STRING[6]
+        VAR_INPUT
+            value : UINT;
+            mode : ConversionMode := ConversionMode#NONE;
+        END_VAR
+        VAR_TEMP
+        END_VAR
+        AnyIntToString(value := value, mode := mode);
+    END_FUNCTION
+
+
+    FUNCTION ToString : STRING[11]
         VAR_INPUT
             value : DINT;
             mode : ConversionMode := ConversionMode#NONE;
@@ -32,9 +53,19 @@ NAMESPACE Simatic.Ax.Conversion
         AnyIntToString(value := value, mode := mode);
     END_FUNCTION
 
-    FUNCTION LIntToString : STRING[20]
+    FUNCTION ToString : STRING[11]
         VAR_INPUT
-            value : DINT;
+            value : UDINT;
+            mode : ConversionMode := ConversionMode#NONE;
+        END_VAR
+        VAR_TEMP
+        END_VAR
+        AnyIntToString(value := value, mode := mode);
+    END_FUNCTION
+
+    FUNCTION ToString : STRING[20]
+        VAR_INPUT
+            value : LINT;
             mode : ConversionMode := ConversionMode#NONE;
         END_VAR
         VAR_TEMP

@@ -25,7 +25,7 @@ NAMESPACE Simatic.Ax.Conversion
             AnyIntToString := CreateStringWithBlanksOfLength(len := digits + 1);
             AnyIntToString[1] := '-';
             offset := 1; // keep space for the sign
-        ELSIF (_value > 0 AND (mode AND ConversionMode#FORCE_SIGN) <> ConversionMode#NONE) THEN  // Add sign to 
+        ELSIF (_value > 0 AND (mode AND ConversionMode#FORCE_SIGN) = ConversionMode#FORCE_SIGN) THEN  // Add sign to 
             AnyIntToString := CreateStringWithBlanksOfLength(len := digits + 1);
             AnyIntToString[1] := '+';
             offset := 1; // keep space for the sign
