@@ -1,0 +1,12 @@
+{
+    "NamespaceSupport": {
+    "scope": "javascript,typescript,st",
+    "prefix": ["namespace, Conversion"],
+    "body": [
+        "NAMESPACE Simatic.Ax.Conversion",
+        "\t$0",
+        "END_NAMESPACE"
+    ],
+    "description": "Creates an namespace template"
+    }    
+}
