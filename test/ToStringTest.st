@@ -67,8 +67,44 @@ NAMESPACE Simatic.Ax.Conversion
             s := AnyIntToString(value := LINT#-9223372036854775808);
             Equal(expected := '-9223372036854775808', actual := s);
             Equal(expected := 20, actual := LengthOf(s));
+        END_METHOD
 
+        {Test}
+        METHOD PUBLIC Convert_Integers_with_forced_sign
+            // 0
+            s := AnyIntToString(value := 0, mode := ConversionMode#FORCE_SIGN);
+            Equal(expected := '0', actual := s);
+            Equal(expected := 1, actual := LengthOf(s));
 
+            // 1
+            s := AnyIntToString(value := 1, mode := ConversionMode#FORCE_SIGN);
+            Equal(expected := '+1', actual := s);
+            Equal(expected := 2, actual := LengthOf(s));
+
+            // 1
+            s := AnyIntToString(value := -1, mode := ConversionMode#FORCE_SIGN);
+            Equal(expected := '-1', actual := s);
+            Equal(expected := 2, actual := LengthOf(s));
+
+            // 99
+            s := AnyIntToString(value := 99, mode := ConversionMode#FORCE_SIGN);
+            Equal(expected := '+99', actual := s);
+            Equal(expected := 3, actual := LengthOf(s));
+
+            // -99
+            s := AnyIntToString(value := -99, mode := ConversionMode#FORCE_SIGN);
+            Equal(expected := '-99', actual := s);
+            Equal(expected := 3, actual := LengthOf(s));
+
+            // 9223372036854775807
+            s := AnyIntToString(value := LINT#9223372036854775807, mode := ConversionMode#FORCE_SIGN);
+            Equal(expected := '+9223372036854775807', actual := s);
+            Equal(expected := 20, actual := LengthOf(s));
+
+            // -9223372036854775808
+            s := AnyIntToString(value := LINT#-9223372036854775808, mode := ConversionMode#FORCE_SIGN);
+            Equal(expected := '-9223372036854775808', actual := s);
+            Equal(expected := 20, actual := LengthOf(s));
         END_METHOD
 
         // Blocked by HA-1737

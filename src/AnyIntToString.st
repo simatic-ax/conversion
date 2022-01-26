@@ -14,21 +14,20 @@ NAMESPACE Simatic.Ax.Conversion
             i : INT;
             digits : INT;
             offset : INT;
-            _tempString : STRING[1] := '0';
         END_VAR
 
         _value := value;
         // Prepare the sting with the correct lenght
-        AnyIntToString := '';
         digits := CountDigits(value);
-        FOR i := 1 TO digits  DO
-            AnyIntToString := Concat(AnyIntToString, _tempString);
-        END_FOR;
-        
-        // -32768 ‥ 32767
+        AnyIntToString := CreateStringWithBlanksOfLength(len := digits);
+
         IF (_value < 0) THEN  // Add sign to 
-            AnyIntToString := Concat(AnyIntToString, _tempString);
+            AnyIntToString := CreateStringWithBlanksOfLength(len := digits + 1);
             AnyIntToString[1] := '-';
+            offset := 1; // keep space for the sign
+        ELSIF (_value > 0 AND (mode AND ConversionMode#FORCE_SIGN) <> ConversionMode#NONE) THEN  // Add sign to 
+            AnyIntToString := CreateStringWithBlanksOfLength(len := digits + 1);
+            AnyIntToString[1] := '+';
             offset := 1; // keep space for the sign
         ELSE
             offset := 0;
