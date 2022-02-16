@@ -18,3 +18,4 @@
 - StringToBool(STRING, BOOL) added
 - StringToArrayOfLint(STRING, ARRAY[*] OF LINT) added
   
+  
