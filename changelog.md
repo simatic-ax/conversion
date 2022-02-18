@@ -12,6 +12,14 @@
 
 - Strings.ToArray(STRING, ARRAY[*] OF CHAR) added
 
+- workaround for stc bug. So the library can be built also for 1500 target
+## February 2022-02-18
+### 0.0.4
+- add Arrays.ToString functionality
+## February 2022-02-16
+### 0.0.5
+- add documentation for Arrays.ToString()
+
 ## March 2022-03-01
 ### To be released
 
