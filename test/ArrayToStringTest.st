@@ -11,7 +11,26 @@ NAMESPACE Simatic.Ax.Conversion
             exp_1_10 : STRING := '1234567890';
             empty_string : STRING;
             len : DINT;
+            long_array : ARRAY[1..1024] OF CHAR;
+            long_string : STRING := '12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234';
         END_VAR
+
+        {Test}
+        METHOD PUBLIC LongArrayTest_expect_StringLength_254
+            VAR_TEMP
+                _str : STRING;
+            END_VAR            Strings.ToArray(str := long_string, arr := long_array);
+            // exceed string lenght
+            long_array[255] := '5';
+            long_array[256] := '6';
+            long_array[257] := '7';
+            
+            _str := Arrays.ToString(arr := long_array);
+        
+            Equal(expected := 254, actual := LengthOf(_str));
+            Equal(expected := long_string, actual := _str);
+        
+        END_METHOD
 
         {Test}
         METHOD PUBLIC Test_Array_ToString_End_smaller_than_start_expect_empty_string
