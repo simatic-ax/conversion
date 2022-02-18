@@ -20,6 +20,12 @@
 ### 0.0.5
 - add documentation for Arrays.ToString()
 
+### 0.0.6
+- Fix startIdx = 0
+
+### 0.0.7
+- Overloaded Arrays.ToString(), so that Arrays.ToString(buf, 0, 0); returns a String with length 0;
+- Overloaded Arrays.ToString(), so that Arrays.ToString(buf, 0, 0); returns a String with length 0;
 ## March 2022-03-01
 ### To be released
 

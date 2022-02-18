@@ -46,6 +46,17 @@ NAMESPACE Simatic.Ax.Conversion
                 _str : STRING;
             END_VAR
 
+            _str := Arrays.ToString(arr := array_0_9, startIdx := 0, endIdx := 0); 
+            exp_0_9 := '0';
+            Equal(expected := 1, actual := LengthOf(_str));
+            Equal(expected := exp_0_9, actual := _str);
+
+            _str := Arrays.ToString(arr := array_0_9, startIdx := 1, endIdx := 1); 
+            exp_0_9 := '1';
+            Equal(expected := 1, actual := LengthOf(_str));
+            Equal(expected := exp_0_9, actual := _str);
+
+
             _str := Arrays.ToString(arr := array_0_9, startIdx := 0, endIdx := 3); 
             exp_0_9 := '0123';
             Equal(expected := 4, actual := LengthOf(_str));
@@ -63,6 +74,27 @@ NAMESPACE Simatic.Ax.Conversion
             ;
         END_METHOD
 
+        {Test}
+        METHOD PUBLIC Test_Array_Invalid_Indices_Expect_empty_Strings
+            VAR_TEMP
+                _str : STRING;
+            END_VAR
 
+            _str := Arrays.ToString(arr := array_1_10, startIdx := 0, endIdx := 11); 
+            exp_0_9 := '';
+            Equal(expected := 0, actual := LengthOf(_str));
+            Equal(expected := exp_0_9, actual := _str);
+            ;
+            _str := Arrays.ToString(arr := array_1_10, startIdx := 0, endIdx := 10); 
+            exp_0_9 := '';
+            Equal(expected := 0, actual := LengthOf(_str));
+            Equal(expected := exp_0_9, actual := _str);
+
+            _str := Arrays.ToString(arr := array_1_10, startIdx := -1, endIdx := 10); 
+            exp_0_9 := '';
+            Equal(expected := 0, actual := LengthOf(_str));
+            Equal(expected := exp_0_9, actual := _str);
+            ;
+        END_METHOD
     END_CLASS
 END_NAMESPACE
