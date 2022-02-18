@@ -3,9 +3,8 @@ version: 0.0.3
 author: Siemens AG
 type: lib
 targets:
-  - "1500"
+  # - "1500"
   - axunit-llvm
-  - llvm
 scripts:
   publishlib:
     - apax publish --package *.apax.tgz --registry 'https://npm.pkg.github.com/'
