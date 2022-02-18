@@ -45,7 +45,12 @@ NAMESPACE Simatic.Ax.Conversion
             VAR_TEMP
                 _str : STRING;
             END_VAR
-            
+
+            _str := Arrays.ToString(arr := array_0_9, startIdx := 0, endIdx := 3); 
+            exp_0_9 := '0123';
+            Equal(expected := 4, actual := LengthOf(_str));
+            Equal(expected := exp_0_9, actual := _str);
+
             _str := Arrays.ToString(arr := array_0_9, startIdx := 1, endIdx := 5); 
             exp_0_9 := '12345';
             Equal(expected := 5, actual := LengthOf(_str));

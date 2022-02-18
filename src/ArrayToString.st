@@ -20,7 +20,7 @@ NAMESPACE Simatic.Ax.Conversion.Arrays
         _ub := UPPER_BOUND(arr, 1);
 
         // if ther is a sstart and end index, check the values
-        IF (endIdx <> 0) AND (startIdx <> 0) THEN
+        IF (endIdx <> 0) OR (startIdx <> 0) THEN
             // start index > end index
             IF (startIdx > endIdx) THEN
                 ToString := '';

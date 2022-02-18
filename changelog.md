@@ -23,6 +23,9 @@
 ## March 2022-03-01
 ### To be released
 
+### 0.0.6
+- Fix startIdx = 0
+- Fix startIdx = 0
 - StringToBool(STRING, BOOL) added
 - StringToArrayOfLint(STRING, ARRAY[*] OF LINT) added
   
