@@ -3,7 +3,7 @@ USING System.Strings;
 
 NAMESPACE Simatic.Ax.Conversion
     {TestFixture}
-    CLASS StringToArrayOfIntTest
+    CLASS StringToArrayOfLIntTest
         VAR
             arr: ARRAY[0..3] OF LINT;
         END_VAR
@@ -44,6 +44,47 @@ NAMESPACE Simatic.Ax.Conversion
             Equal(LINT#345, arr[1]);
             Equal(LINT#6789, arr[2]);
             Equal(LINT#101112, arr[3]);
+        END_METHOD
+
+        {Test}
+        METHOD PUBLIC Array_Converts_with_spaces
+            VAR 
+                str: STRING := '   [   12,   345   ,    6789    ,    101112    ]   ';
+                succes: BOOL;
+            END_VAR
+            succes := StringToArrayOfLint(str, arr);
+            Equal(TRUE, succes);
+            Equal(LINT#12, arr[0]);
+            Equal(LINT#345, arr[1]);
+            Equal(LINT#6789, arr[2]);
+            Equal(LINT#101112, arr[3]);
+        END_METHOD
+
+        {Test}
+        METHOD PUBLIC Array_Converts_toSmallArray
+            VAR 
+                str: STRING := '[12, 345, 6789, 101112, 1234]';
+                succes: BOOL;
+            END_VAR
+            succes := StringToArrayOfLint(str, arr);
+            Equal(TRUE, succes);
+            Equal(LINT#12, arr[0]);
+            Equal(LINT#345, arr[1]);
+            Equal(LINT#6789, arr[2]);
+            Equal(LINT#101112, arr[3]);
+        END_METHOD
+
+        {Test}
+        METHOD PUBLIC Array_Converts_toBigArray
+            VAR 
+                str: STRING := '[12, 345, 6789]';
+                succes: BOOL;
+            END_VAR
+            succes := StringToArrayOfLint(str, arr);
+            Equal(TRUE, succes);
+            Equal(LINT#12, arr[0]);
+            Equal(LINT#345, arr[1]);
+            Equal(LINT#6789, arr[2]);
         END_METHOD
 
     END_CLASS
