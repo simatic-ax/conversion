@@ -33,55 +33,69 @@ NAMESPACE Simatic.Ax.Conversion
             RETURN;
         END_IF;
 
-        //TODO: make funktion out of it that gives back boundaries
         lb := LOWER_BOUND(arr, 1);
         ub := UPPER_BOUND(arr, 1);
         
-        
-    FOR index := 1 TO LengthOf(str) DO
-        IF str[index] = '[' THEN
-            arrayStart := index + 1;
-            EXIT;
-        END_IF;
-    END_FOR;
+        GetArrayBounds(str, arrayStart, arrayEnd);
 
-    FOR index := LengthOf(str) TO 1 BY -1 DO
-        IF str[index] = ']' THEN
-            arrayEnd := index;
-            EXIT;
-        END_IF;
-    END_FOR;
+        arrayIndex := LOWER_BOUND(arr, 1);
+        //loop through string
+        FOR index := arrayStart TO arrayEnd DO
 
-    arrayIndex := LOWER_BOUND(arr, 1);
-    //loop through string
-    FOR index := arrayStart TO arrayEnd DO
-
-        IF NOT inElement AND NOT ((str[index] = ' ' OR str[index] = ',')) THEN
-            elementStart := index;
-            inElement := TRUE;
-        END_IF;
-
-        IF inElement AND (str[index] = ' ' OR str[index] = ',' OR str[index] = ']') THEN
-            elementEnd := index;
-            inElement := FALSE;
-            elementFound := TRUE;
-        END_IF;
-
-        //substring
-        IF elementFound THEN
-            substr := Substring(str, elementStart, elementEnd - elementStart);
-            parseSucces := StringToAnyInt(substr, value);
-            IF parseSucces THEN
-                arr[arrayIndex] := value;
-                arrayIndex := arrayIndex + 1;
-                elementFound := FALSE;
-                StringToArrayOfLint := TRUE;
-            ELSE
-                StringToArrayOfLint := FALSE;
-                RETURN;
+            IF NOT inElement AND NOT ((str[index] = ' ' OR str[index] = ',')) THEN
+                elementStart := index;
+                inElement := TRUE;
             END_IF;
-        END_IF;
-    END_FOR;
+
+            IF inElement AND (str[index] = ' ' OR str[index] = ',' OR str[index] = ']') THEN
+                elementEnd := index;
+                inElement := FALSE;
+                elementFound := TRUE;
+            END_IF;
+
+            //substring
+            IF elementFound THEN
+                substr := Substring(str, elementStart, elementEnd - elementStart);
+                parseSucces := StringToAnyInt(substr, value);
+                IF parseSucces THEN
+                    arr[arrayIndex] := value;
+                    arrayIndex := arrayIndex + 1;
+                    elementFound := FALSE;
+                    StringToArrayOfLint := TRUE;
+                ELSE
+                    StringToArrayOfLint := FALSE;
+                    RETURN;
+                END_IF;
+            END_IF;
+        END_FOR;
+
+    END_FUNCTION
+
+    FUNCTION GetArrayBounds
+        VAR_INPUT
+            str: STRING;
+        END_VAR
+        VAR_OUTPUT
+            lower: INT;
+            upper: INT;
+        END_VAR
+        VAR
+            index: INT;
+        END_VAR
+        
+        FOR index := 1 TO LengthOf(str) DO
+            IF str[index] = '[' THEN
+                lower := index + 1;
+                EXIT;
+            END_IF;
+        END_FOR;
+    
+        FOR index := LengthOf(str) TO 1 BY -1 DO
+            IF str[index] = ']' THEN
+                upper := index;
+                EXIT;
+            END_IF;
+        END_FOR;
 
     END_FUNCTION
 

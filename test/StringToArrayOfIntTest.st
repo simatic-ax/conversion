@@ -33,6 +33,16 @@ NAMESPACE Simatic.Ax.Conversion
         END_METHOD
 
         {Test}
+        METHOD PUBLIC WrongArray_ReturnsFalse
+            VAR 
+                str: STRING := '["hello", "goodbye"]';
+                succes: BOOL;
+            END_VAR
+            succes := StringToArrayOfLint(str, arr);
+            Equal(FALSE, succes);
+        END_METHOD
+
+        {Test}
         METHOD PUBLIC Array_Converts
             VAR 
                 str: STRING := '[12, 345, 6789, 101112]';
