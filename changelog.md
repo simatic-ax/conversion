@@ -11,4 +11,10 @@
 ### 0.0.2
 
 - Strings.ToArray(STRING, ARRAY[*] OF CHAR) added
+
+## March 2022-03-01
+### To be released
+
+- StringToBool(STRING, BOOL) added
+- StringToArrayOfLint(STRING, ARRAY[*] OF LINT) added
   
