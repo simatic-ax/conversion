@@ -1,3 +1,4 @@
+USING Simatic.Ax.Conversion.Strings;
 USING System.Strings;
 
 NAMESPACE Simatic.Ax.Conversion
@@ -25,6 +26,7 @@ NAMESPACE Simatic.Ax.Conversion
 
             substr: STRING;
             parseSucces: BOOL;
+
             value: LINT; //mehr möglich machen!
         END_VAR
 
@@ -53,10 +55,11 @@ NAMESPACE Simatic.Ax.Conversion
                 elementFound := TRUE;
             END_IF;
 
-            //substring
             IF elementFound THEN
+
                 substr := Substring(str, elementStart, elementEnd - elementStart);
                 parseSucces := StringToAnyInt(substr, value);
+
                 IF parseSucces THEN
                     arr[arrayIndex] := value;
                     arrayIndex := arrayIndex + 1;
@@ -68,7 +71,6 @@ NAMESPACE Simatic.Ax.Conversion
                 END_IF;
             END_IF;
         END_FOR;
-
     END_FUNCTION
 
     FUNCTION GetArrayBounds
