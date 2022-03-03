@@ -1,7 +1,7 @@
 {
     "UsingSnippet": {
     "scope": "javascript,typescript,st",
-    "prefix": ["Json Using"],
+    "prefix": ["Conversion Using"],
     "body": [
         "USING Simatic.Ax.Conversion;",
         ""

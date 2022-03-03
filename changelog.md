@@ -12,9 +12,24 @@
 
 - Strings.ToArray(STRING, ARRAY[*] OF CHAR) added
 
-## March 2022-03-01
-### To be released
+- workaround for stc bug. So the library can be built also for 1500 target
+## February 2022-02-18
+### 0.0.4
+- add Arrays.ToString functionality
+## February 2022-02-16
+### 0.0.5
+- add documentation for Arrays.ToString()
 
+### 0.0.6
+- Fix startIdx = 0
 - StringToBool(STRING, BOOL) added
 - StringToArrayOfLint(STRING, ARRAY[*] OF LINT) added
+
+### 0.0.7
+- Overloaded Arrays.ToString(), so that Arrays.ToString(buf, 0, 0); returns a String with length 0;
+## March 2022-03-01
+### 0.0.8
+- StringToBool(STRING, BOOL) added
+- StringToArrayOfLint(STRING, ARRAY[*] OF LINT) added
+  
   
