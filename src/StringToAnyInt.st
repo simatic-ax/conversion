@@ -1,7 +1,7 @@
 USING System.Strings;
 
 NAMESPACE Simatic.Ax.Conversion
-    FUNCTION INTERNAL StringToAnyInt : BOOL
+    FUNCTION StringToAnyInt : BOOL
         VAR_INPUT
             str : STRING;
         END_VAR
@@ -14,6 +14,7 @@ NAMESPACE Simatic.Ax.Conversion
             _val : INT;
             _sig : INT;
             _start : INT;
+            _c : STRING;
         END_VAR
 
         _len := LengthOf(str);
@@ -32,7 +33,8 @@ NAMESPACE Simatic.Ax.Conversion
         FOR i := _start TO _len DO
 
             value := value * 10;
-            CASE str[i] OF
+            _c := str[i];
+            CASE _c OF
                 '0' : _val := 0;
                 '1' : _val := 1;
                 '2' : _val := 2;
@@ -61,6 +63,7 @@ NAMESPACE Simatic.Ax.Conversion
         ELSE
             StringToAnyInt := TRUE;
         END_IF;
+        ;
     END_FUNCTION
 
     FUNCTION INTERNAL StringToULint: BOOL
@@ -75,6 +78,7 @@ NAMESPACE Simatic.Ax.Conversion
             i : INT;
             _val : ULINT;
             _start : INT;
+            _c : STRING;
         END_VAR
 
         _len := LengthOf(str);
@@ -90,7 +94,8 @@ NAMESPACE Simatic.Ax.Conversion
         FOR i := _start TO _len DO
 
             value := value * ULINT#10;
-            CASE str[i] OF
+            _c := str[i];
+            CASE _c OF
                 '0' : _val := ULINT#0;
                 '1' : _val := ULINT#1;
                 '2' : _val := ULINT#2;
@@ -112,5 +117,6 @@ NAMESPACE Simatic.Ax.Conversion
             value := value + _val;
         END_FOR;        
         StringToULint := TRUE;
+        ;
     END_FUNCTION
 END_NAMESPACE
