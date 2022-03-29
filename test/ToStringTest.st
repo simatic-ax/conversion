@@ -122,7 +122,7 @@ NAMESPACE Simatic.Ax.Conversion
         //         len : INT;
         //     END_VAR
         //     ;            
-        //     s := ToString(value := v);
+        //     s := Integer.ToString(value := v);
         //     Equal(expected := expStr, actual := s);
         //     Equal(expected := len, actual := LengthOf(s));
         // END_METHOD
