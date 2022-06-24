@@ -32,4 +32,6 @@
 - StringToBool(STRING, BOOL) added
 - StringToArrayOfLint(STRING, ARRAY[*] OF LINT) added
   
-  
+## March 2022-06-24
+### 0.1.0
+- Depends on new System.Math  

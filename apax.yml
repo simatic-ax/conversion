@@ -1,5 +1,5 @@
 name: '@simatic-ax/conversion'
-version: 0.0.8
+version: 0.1.0
 author: Siemens AG
 type: lib
 targets:
@@ -15,11 +15,11 @@ scripts:
     - apax version $1
     - apax pack
 devDependencies:
-  "@ax/sdk": 1.0.154
-  "@simatic-ax/snippetscollection": 0.0.6
+  "@ax/sdk": 1.0.175
+  "@simatic-ax/snippetscollection": 0.0.13
 dependencies:
-  "@ax/system-strings": 2.0.13
-  "@ax/system-math": 1.0.32
+  "@ax/system-strings": 2.1.6
+  "@ax/system-math": 1.1.13
 registries:
   '@simatic-ax': 'https://npm.pkg.github.com/'
 
