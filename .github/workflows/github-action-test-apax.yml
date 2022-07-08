@@ -2,6 +2,7 @@ name: test-apax
 on:
   push:
     branches:
+      - '*'
       - '!release'
 env:
   ACTIONS_REPO: simatic-ax/actions
