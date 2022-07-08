@@ -24,6 +24,57 @@ NAMESPACE Simatic.Ax.Conversion
             Equal(expected := TRUE, actual := res);
         END_METHOD
 
+        {Test(str := STRING#'', value := ULINT#0, success :=FALSE)}
+        {Test(str := STRING#'+', value := ULINT#0, success :=FALSE)}
+        {Test(str := STRING#'-', value := ULINT#0, success :=FALSE)}
+        {Test(str := STRING#'0', value := ULINT#0, success :=TRUE)}
+        {Test(str := STRING#'1', value := ULINT#1, success :=TRUE)}
+        {Test(str := STRING#'15', value := ULINT#15, success :=TRUE)}
+        {Test(str := STRING#'18446744073709551600', value := ULINT#18446744073709551600, success :=TRUE)}
+        {Test(str := STRING#'18446744073709551601', value := ULINT#18446744073709551601, success :=TRUE)}
+        {Test(str := STRING#'18446744073709551602', value := ULINT#18446744073709551602, success :=TRUE)}
+        {Test(str := STRING#'18446744073709551603', value := ULINT#18446744073709551603, success :=TRUE)}
+        {Test(str := STRING#'18446744073709551604', value := ULINT#18446744073709551604, success :=TRUE)}
+        {Test(str := STRING#'18446744073709551605', value := ULINT#18446744073709551605, success :=TRUE)}
+        {Test(str := STRING#'18446744073709551606', value := ULINT#18446744073709551606, success :=TRUE)}
+        {Test(str := STRING#'18446744073709551607', value := ULINT#18446744073709551607, success :=TRUE)}
+        {Test(str := STRING#'18446744073709551608', value := ULINT#18446744073709551608, success :=TRUE)}
+        {Test(str := STRING#'18446744073709551609', value := ULINT#18446744073709551609, success :=TRUE)}
+        {Test(str := STRING#'18446744073709551610', value := ULINT#18446744073709551610, success :=TRUE)}
+        {Test(str := STRING#'18446744073709551611', value := ULINT#18446744073709551611, success :=TRUE)}
+        {Test(str := STRING#'18446744073709551612', value := ULINT#18446744073709551612, success :=TRUE)}
+        {Test(str := STRING#'18446744073709551613', value := ULINT#18446744073709551613, success :=TRUE)}
+        {Test(str := STRING#'18446744073709551614', value := ULINT#18446744073709551614, success :=TRUE)}
+        {Test(str := STRING#'18446744073709551615', value := ULINT#18446744073709551615, success :=TRUE)}
+        {Test(str := STRING#'18446744073709551616', value := ULINT#0, success :=FALSE)}
+        {Test(str := STRING#'18446744073709551617', value := ULINT#0, success :=FALSE)}
+        {Test(str := STRING#'18446744073709551618', value := ULINT#0, success :=FALSE)}
+        {Test(str := STRING#'18446744073709551619', value := ULINT#0, success :=FALSE)}
+        {Test(str := STRING#'18446744073709551620', value := ULINT#0, success :=FALSE)}
+        {Test(str := STRING#'18446744073709551621', value := ULINT#0, success :=FALSE)}
+        {Test(str := STRING#'18446744073709551622', value := ULINT#0, success :=FALSE)}
+        {Test(str := STRING#'18446744073709551623', value := ULINT#0, success :=FALSE)}
+        {Test(str := STRING#'18446744073709551624', value := ULINT#0, success :=FALSE)}
+        {Test(str := STRING#'18446744073709551625', value := ULINT#0, success :=FALSE)}
+        {Test(str := STRING#'18446744073709551626', value := ULINT#0, success :=FALSE)}
+        {Test(str := STRING#'18446744073709551636', value := ULINT#0, success :=FALSE)}
+        {Test(str := STRING#'18446744073709551746', value := ULINT#0, success :=FALSE)}
+        {Test(str := STRING#'18446744073709551800', value := ULINT#0, success :=FALSE)}
+        {Test(str := STRING#'20000000000000000000', value := ULINT#0, success :=FALSE)}
+        METHOD PUBLIC Convert_STRING_TO_ULINT
+            VAR_INPUT
+                str : STRING;
+                value : ULINT;
+                success : BOOL;
+            END_VAR
+            VAR_TEMP
+                resVal : ULINT;
+            END_VAR
+            res := StringToULint(str := str, value => resVal);
+            Equal(expected := value, actual := resVal);
+            Equal(expected := success, actual := res);
+        END_METHOD
+
         {Test}
         METHOD PUBLIC Convert_STRING_123_TO_LINT_123
             res := StringToAnyInt(str := '123', value => val);
