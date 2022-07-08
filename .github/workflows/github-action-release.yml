@@ -32,7 +32,6 @@ jobs:
           cat .npmrc
           echo "VERSION=$(npm show @${{ env.SCOPE }}/${{ env.PROJECT_NAME }} version --registry=https://npm.pkg.github.com --scope=${{ env.SCOPE }})" >> $GITHUB_ENV
           echo $VERSION
-
       - name: "Check contents of actions folder"
         run: tree -d ./actions
       - name: "Install apax and dependencies"
