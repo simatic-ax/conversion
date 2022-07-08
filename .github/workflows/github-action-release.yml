@@ -80,6 +80,12 @@ jobs:
         with:
           apax-access-token: ${{ secrets.APAX_TOKEN }}
 
+      - name: "Login to the private repo"
+        run: |
+          apax login \
+          --registry "https://npm.pkg.github.com" \
+          --password ${{ secrets.CI_KIT_TOKEN }}
+
       - name: "Build apax library"
         uses: ./actions/.github/actions/apax-build
         with:
@@ -111,6 +117,12 @@ jobs:
         uses: ./actions/.github/actions/setup-apax-runner
         with:
           apax-access-token: ${{ secrets.APAX_TOKEN }}
+
+      - name: "Login to the private repo"
+        run: |
+          apax login \
+          --registry "https://npm.pkg.github.com" \
+          --password ${{ secrets.CI_KIT_TOKEN }}
 
       - name: "Build apax library"
         uses: ./actions/.github/actions/apax-test
