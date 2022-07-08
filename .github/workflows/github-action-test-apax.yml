@@ -1,7 +1,8 @@
 name: test-apax
 on:
   push:
-
+    branches:
+      - '!release'
 env:
   ACTIONS_REPO: simatic-ax/actions
   VERSIONING_TOOL_REPO: simatic-ax/simatic_versioning
