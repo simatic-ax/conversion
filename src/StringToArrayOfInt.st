@@ -44,7 +44,7 @@ NAMESPACE Simatic.Ax.Conversion
         //loop through string
         FOR index := arrayStart TO arrayEnd DO
 
-            IF NOT inElement AND NOT ((str[index] = ' ' OR str[index] = ',')) THEN
+            IF NOT inElement AND NOT ((str[index] = ' ' OR str[index] = ',' OR str[index] = ']')) THEN
                 elementStart := index;
                 inElement := TRUE;
             END_IF;
