@@ -3,7 +3,15 @@ USING System.Strings;
 
 NAMESPACE Simatic.Ax.Conversion
 
-    FUNCTION INTERNAL StringToArrayOfLint : BOOL
+    /// Convert a string with array of integers like [1, 2, 3] into an array of LINT
+    /// Returns the number of converted elements. 
+    /// Returns 0, if the string can't be converted
+    /// If the destination array is smaller than the number of elements in the string,
+    /// the array will be filled it's maximum size. In this case the function returns 
+    /// the number of the converted numbers (size of array)
+    /// If less elements in the string than the size of the array, the last elements
+    /// will not overwritten.
+    FUNCTION INTERNAL StringToArrayOfLint : DINT
         VAR_INPUT
             str: STRING;
         END_VAR
@@ -18,19 +26,20 @@ NAMESPACE Simatic.Ax.Conversion
             index: INT;
             intString: STRING;
             arrayIndex: DINT;
+            count: DINT;
 
             elementStart: INT;
             elementEnd: INT;
             inElement: BOOL := FALSE;
             elementFound: BOOL := FALSE;
-
+            ch : CHAR;
             substr: STRING;
             parseSucces: BOOL;
 
             value: LINT; //mehr möglich machen!
         END_VAR
 
-        StringToArrayOfLint := FALSE;
+        StringToArrayOfLint := 0;
         IF LengthOf(str) = 0 THEN
             RETURN;
         END_IF;
@@ -44,12 +53,21 @@ NAMESPACE Simatic.Ax.Conversion
         //loop through string
         FOR index := arrayStart TO arrayEnd DO
 
-            IF NOT inElement AND NOT ((str[index] = ' ' OR str[index] = ',' OR str[index] = ']')) THEN
+            ch := str[index];
+
+            IF (NOT inElement AND ch = ']') THEN
+                StringToArrayOfLint := count;
+                RETURN;
+            END_IF;
+
+
+            IF NOT inElement AND NOT ((ch = ' ' OR ch = ',')) THEN
                 elementStart := index;
                 inElement := TRUE;
             END_IF;
 
-            IF inElement AND (str[index] = ' ' OR str[index] = ',' OR str[index] = ']') THEN
+
+            IF inElement AND (ch = ' ' OR ch = ',' OR ch = ']') THEN
                 elementEnd := index;
                 inElement := FALSE;
                 elementFound := TRUE;
@@ -60,13 +78,18 @@ NAMESPACE Simatic.Ax.Conversion
                 substr := Substring(str, elementStart, elementEnd - elementStart);
                 parseSucces := StringToAnyInt(substr, value);
 
-                IF parseSucces THEN
+                IF parseSucces THEN                  
+                    IF (arrayIndex > ub) THEN
+                        StringToArrayOfLint := count;
+                        RETURN;
+                    END_IF;
                     arr[arrayIndex] := value;
+                    count := count + 1;
+                    StringToArrayOfLint := count;
                     arrayIndex := arrayIndex + 1;
                     elementFound := FALSE;
-                    StringToArrayOfLint := TRUE;
                 ELSE
-                    StringToArrayOfLint := FALSE;
+                    StringToArrayOfLint := 0;
                     RETURN;
                 END_IF;
             END_IF;
