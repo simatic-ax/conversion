@@ -1,7 +1,7 @@
 USING AxUnit.Assert;
 USING System.Strings;
 
-NAMESPACE Simatic.Ax.Conversion
+NAMESPACE Simatic.Ax.Conversion.Strings.ToArray
     {TestFixture}
     CLASS StringToArrayOfLIntTest
         VAR
@@ -14,11 +14,11 @@ NAMESPACE Simatic.Ax.Conversion
                 str: STRING := '';
                 succes: BOOL;
             END_VAR
-            succes := StringToArrayOfLint(str, arr);
+            succes := ToArray.OfLint(str, arr);
             Equal(FALSE, succes);
 
             str:= '   ';
-            succes := StringToArrayOfLint(str, arr);
+            succes := ToArray.OfLint(str, arr);
             Equal(FALSE, succes);
         END_METHOD
 
@@ -28,7 +28,7 @@ NAMESPACE Simatic.Ax.Conversion
                 str: STRING := 'hello';
                 succes: BOOL;
             END_VAR
-            succes := StringToArrayOfLint(str, arr);
+            succes := OfLint(str, arr);
             Equal(FALSE, succes);
         END_METHOD
 
@@ -38,7 +38,7 @@ NAMESPACE Simatic.Ax.Conversion
                 str: STRING := '["hello", "goodbye"]';
                 succes: BOOL;
             END_VAR
-            succes := StringToArrayOfLint(str, arr);
+            succes := OfLint(str, arr);
             Equal(FALSE, succes);
         END_METHOD
 
@@ -48,7 +48,7 @@ NAMESPACE Simatic.Ax.Conversion
                 str: STRING := '[12, 345, 6789, 101112]';
                 succes: BOOL;
             END_VAR
-            succes := StringToArrayOfLint(str, arr);
+            succes := OfLint(str, arr);
             Equal(TRUE, succes);
             Equal(LINT#12, arr[0]);
             Equal(LINT#345, arr[1]);
@@ -62,7 +62,7 @@ NAMESPACE Simatic.Ax.Conversion
                 str: STRING := '   [   12,   345   ,    6789    ,    101112    ]   ';
                 succes: BOOL;
             END_VAR
-            succes := StringToArrayOfLint(str, arr);
+            succes := OfLint(str, arr);
             Equal(TRUE, succes);
             Equal(LINT#12, arr[0]);
             Equal(LINT#345, arr[1]);
@@ -76,7 +76,7 @@ NAMESPACE Simatic.Ax.Conversion
                 str: STRING := '[12, 345, 6789, 101112, 1234]';
                 succes: BOOL;
             END_VAR
-            succes := StringToArrayOfLint(str, arr);
+            succes := OfLint(str, arr);
             Equal(TRUE, succes);
             Equal(LINT#12, arr[0]);
             Equal(LINT#345, arr[1]);
@@ -90,7 +90,7 @@ NAMESPACE Simatic.Ax.Conversion
                 str: STRING := '[12, 345, 6789]';
                 succes: BOOL;
             END_VAR
-            succes := StringToArrayOfLint(str, arr);
+            succes := OfLint(str, arr);
             Equal(TRUE, succes);
             Equal(LINT#12, arr[0]);
             Equal(LINT#345, arr[1]);

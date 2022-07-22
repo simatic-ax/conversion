@@ -19,7 +19,7 @@ NAMESPACE Simatic.Ax.Conversion
         METHOD PUBLIC LongArrayTest_expect_StringLength_254
             VAR_TEMP
                 _str : STRING;
-            END_VAR            Strings.ToArray(str := long_string, arr := long_array);
+            END_VAR            Strings.ToArray.OfCharCount(str := long_string, arr := long_array);
             // exceed string lenght
             long_array[255] := '5';
             long_array[256] := '6';

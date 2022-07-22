@@ -1,9 +1,9 @@
 USING Simatic.Ax.Conversion.Strings;
 USING System.Strings;
 
-NAMESPACE Simatic.Ax.Conversion
+NAMESPACE Simatic.Ax.Conversion.Strings.ToArray
 
-    FUNCTION INTERNAL StringToArrayOfLint : BOOL
+    FUNCTION INTERNAL OfLint : BOOL
         VAR_INPUT
             str: STRING;
         END_VAR
@@ -23,14 +23,14 @@ NAMESPACE Simatic.Ax.Conversion
             elementEnd: INT;
             inElement: BOOL := FALSE;
             elementFound: BOOL := FALSE;
-
+            ch : CHAR;
             substr: STRING;
             parseSucces: BOOL;
 
             value: LINT; //mehr möglich machen!
         END_VAR
 
-        StringToArrayOfLint := FALSE;
+        OfLint := FALSE;
         IF LengthOf(str) = 0 THEN
             RETURN;
         END_IF;
@@ -44,12 +44,21 @@ NAMESPACE Simatic.Ax.Conversion
         //loop through string
         FOR index := arrayStart TO arrayEnd DO
 
-            IF NOT inElement AND NOT ((str[index] = ' ' OR str[index] = ',' OR str[index] = ']')) THEN
+            ch := str[index];
+
+            IF (NOT inElement AND ch = ']') THEN
+                OfLint := TRUE;
+                RETURN;
+            END_IF;
+
+
+            IF NOT inElement AND NOT ((ch = ' ' OR ch = ',')) THEN
                 elementStart := index;
                 inElement := TRUE;
             END_IF;
 
-            IF inElement AND (str[index] = ' ' OR str[index] = ',' OR str[index] = ']') THEN
+
+            IF inElement AND (ch = ' ' OR ch = ',' OR ch = ']') THEN
                 elementEnd := index;
                 inElement := FALSE;
                 elementFound := TRUE;
@@ -60,13 +69,17 @@ NAMESPACE Simatic.Ax.Conversion
                 substr := Substring(str, elementStart, elementEnd - elementStart);
                 parseSucces := StringToAnyInt(substr, value);
 
-                IF parseSucces THEN
+                IF parseSucces THEN                  
+                    IF (arrayIndex > ub) THEN
+                        OfLint := TRUE;
+                        RETURN;
+                    END_IF;
                     arr[arrayIndex] := value;
+                    OfLint := TRUE;
                     arrayIndex := arrayIndex + 1;
                     elementFound := FALSE;
-                    StringToArrayOfLint := TRUE;
                 ELSE
-                    StringToArrayOfLint := FALSE;
+                    OfLint := FALSE;
                     RETURN;
                 END_IF;
             END_IF;
