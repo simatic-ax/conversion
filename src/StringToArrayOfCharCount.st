@@ -1,7 +1,7 @@
 USING System.Strings;
 
-NAMESPACE Simatic.Ax.Conversion.Strings
-    FUNCTION ToArray : DINT
+NAMESPACE Simatic.Ax.Conversion.Strings.ToArray
+    FUNCTION OfCharCount : DINT
         VAR_INPUT
             str : STRING;
         END_VAR
@@ -25,6 +25,6 @@ NAMESPACE Simatic.Ax.Conversion.Strings
         FOR i := 0 TO _maxLen - 1 DO
             arr[i + _lb] := str[i + 1];
         END_FOR;
-        ToArray := i;
+        OfCharCount := i;
     END_FUNCTION
 END_NAMESPACE

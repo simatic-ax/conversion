@@ -1,7 +1,7 @@
 USING AxUnit.Assert;
 USING System.Strings;
 
-NAMESPACE Simatic.Ax.Conversion
+NAMESPACE Simatic.Ax.Conversion.Strings.ToArray
     {TestFixture}
     CLASS StringToArrayOfLIntTest
         VAR
@@ -12,44 +12,44 @@ NAMESPACE Simatic.Ax.Conversion
         METHOD PUBLIC EmptyArray_ReturnsFalse
             VAR 
                 str: STRING := '';
-                succes: DINT;
+                succes: BOOL;
             END_VAR
-            succes := StringToArrayOfLint(str, arr);
-            Equal(0, succes);
+            succes := ToArray.OfLint(str, arr);
+            Equal(FALSE, succes);
 
             str:= '   ';
-            succes := StringToArrayOfLint(str, arr);
-            Equal(0, succes);
+            succes := ToArray.OfLint(str, arr);
+            Equal(FALSE, succes);
         END_METHOD
 
         {Test}
         METHOD PUBLIC NotArray_ReturnsFalse
             VAR 
                 str: STRING := 'hello';
-                succes: DINT;
+                succes: BOOL;
             END_VAR
-            succes := StringToArrayOfLint(str, arr);
-            Equal(0, succes);
+            succes := OfLint(str, arr);
+            Equal(FALSE, succes);
         END_METHOD
 
         {Test}
         METHOD PUBLIC WrongArray_ReturnsFalse
             VAR 
                 str: STRING := '["hello", "goodbye"]';
-                succes: DINT;
+                succes: BOOL;
             END_VAR
-            succes := StringToArrayOfLint(str, arr);
-            Equal(0, succes);
+            succes := OfLint(str, arr);
+            Equal(FALSE, succes);
         END_METHOD
 
         {Test}
         METHOD PUBLIC Array_Converts
             VAR 
                 str: STRING := '[12, 345, 6789, 101112]';
-                succes: DINT;
+                succes: BOOL;
             END_VAR
-            succes := StringToArrayOfLint(str, arr);
-            Equal(4, succes);
+            succes := OfLint(str, arr);
+            Equal(TRUE, succes);
             Equal(LINT#12, arr[0]);
             Equal(LINT#345, arr[1]);
             Equal(LINT#6789, arr[2]);
@@ -60,10 +60,10 @@ NAMESPACE Simatic.Ax.Conversion
         METHOD PUBLIC Array_Converts_with_spaces
             VAR 
                 str: STRING := '   [   12,   345   ,    6789    ,    101112    ]   ';
-                succes: DINT;
+                succes: BOOL;
             END_VAR
-            succes := StringToArrayOfLint(str, arr);
-            Equal(4, succes);
+            succes := OfLint(str, arr);
+            Equal(TRUE, succes);
             Equal(LINT#12, arr[0]);
             Equal(LINT#345, arr[1]);
             Equal(LINT#6789, arr[2]);
@@ -71,26 +71,13 @@ NAMESPACE Simatic.Ax.Conversion
         END_METHOD
 
         {Test}
-        METHOD PUBLIC Smaller_Array_Converts_with_spaces
-            VAR 
-                str: STRING := '   [   345   ,    6789    ,    101112    ]   ';
-                succes: DINT;
-            END_VAR
-            succes := StringToArrayOfLint(str, arr);
-            Equal(3, succes);
-            Equal(LINT#345, arr[0]);
-            Equal(LINT#6789, arr[1]);
-            Equal(LINT#101112, arr[2]);
-        END_METHOD
-
-        {Test}
         METHOD PUBLIC Array_Converts_toSmallArray
             VAR 
                 str: STRING := '[12, 345, 6789, 101112, 1234]';
-                count: DINT;
+                succes: BOOL;
             END_VAR
-            count := StringToArrayOfLint(str, arr);
-            Equal(4, count);
+            succes := OfLint(str, arr);
+            Equal(TRUE, succes);
             Equal(LINT#12, arr[0]);
             Equal(LINT#345, arr[1]);
             Equal(LINT#6789, arr[2]);
@@ -101,10 +88,10 @@ NAMESPACE Simatic.Ax.Conversion
         METHOD PUBLIC Array_Converts_toBigArray
             VAR 
                 str: STRING := '[12, 345, 6789]';
-                count: DINT;
+                succes: BOOL;
             END_VAR
-            count := StringToArrayOfLint(str, arr);
-            Equal(3, count);
+            succes := OfLint(str, arr);
+            Equal(TRUE, succes);
             Equal(LINT#12, arr[0]);
             Equal(LINT#345, arr[1]);
             Equal(LINT#6789, arr[2]);
