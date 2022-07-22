@@ -12,6 +12,7 @@ NAMESPACE Simatic.Ax.Conversion
             _len : INT;
             i : INT;
             _val : INT;
+            _val_max : INT; 
             _sig : INT;
             _start : INT;
             _c : STRING;
@@ -22,17 +23,26 @@ NAMESPACE Simatic.Ax.Conversion
         IF (str[1] = '+') THEN
             _sig := 1;
             _start := 2;
+            _val_max := 7; // = 2^63-1 MOD 10
         ELSIF (str[1] = '-') THEN
             _sig := -1;
             _start := 2;
+            _val_max := 8; // = 2^63   MOD 10
         ELSE 
             _sig := 1;
             _start := 1;
+            _val_max := 7; // = 2^63-1 MOD 10
         END_IF;
-        value := 0;
-        FOR i := _start TO _len DO
 
-            value := value * 10;
+        value := 0;
+
+        IF (_len - _start < 0) THEN
+            // no digits.
+            StringToAnyInt := FALSE;
+            RETURN;        
+        END_IF;
+
+        FOR i := _start TO _len DO
             _c := str[i];
             CASE _c OF
                 '0' : _val := 0;
@@ -45,25 +55,29 @@ NAMESPACE Simatic.Ax.Conversion
                 '7' : _val := 7;
                 '8' : _val := 8;
                 '9' : _val := 9;
-                CHAR#0: 
-                    StringToAnyInt := TRUE;
-                    value := value * _sig;
-                    RETURN;
             ELSE
                 value := 0;
                 StringToAnyInt := FALSE;
                 RETURN;
             END_CASE;
+
+            IF ((value < 0) OR //previously accepted overflow for minimum of LINT
+                // 2^63-1    >9223372036854775807 
+                (value > LINT#922337203685477580) OR
+                (value = LINT#922337203685477580 AND _val > _val_max)) THEN
+                // overflow
+                value := LINT#0;
+                StringToAnyInt := FALSE;
+                RETURN;            
+            END_IF;
+
+            value := value * 10;
             value := value + _val;
         END_FOR;        
         value := value * _sig;
-        IF (_sig = 1 AND value < 0) OR (_sig = -1 AND value > 0) THEN
-            value := 0;
-            StringToAnyInt := FALSE;
-        ELSE
-            StringToAnyInt := TRUE;
-        END_IF;
-        ;
+        
+        StringToAnyInt := TRUE;
+
     END_FUNCTION
 
     FUNCTION INTERNAL StringToULint: BOOL
@@ -91,9 +105,16 @@ NAMESPACE Simatic.Ax.Conversion
 
         value := ULINT#0;
         
+        IF (_len - _start < 0) THEN
+            // no digits.
+            StringToULint := FALSE;
+            RETURN;        
+        END_IF;
+
+        
+
         FOR i := _start TO _len DO
 
-            value := value * ULINT#10;
             _c := str[i];
             CASE _c OF
                 '0' : _val := ULINT#0;
@@ -106,17 +127,24 @@ NAMESPACE Simatic.Ax.Conversion
                 '7' : _val := ULINT#7;
                 '8' : _val := ULINT#8;
                 '9' : _val := ULINT#9;
-                CHAR#0: 
-                StringToULint := TRUE;
-                    RETURN;
             ELSE
                 value := ULINT#0;
                 StringToULint := FALSE;
                 RETURN;
             END_CASE;
+            
+            IF ((value > ULINT#1844674407370955161) OR (value = ULINT#1844674407370955161 AND _val > ULINT#5)) THEN
+                //  2^64 - 1 = 18446744073709551616
+                // overflow
+                value := ULINT#0;
+                StringToULint := FALSE;
+                RETURN;            
+            END_IF;
+
+            value := value * ULINT#10;
             value := value + _val;
         END_FOR;        
         StringToULint := TRUE;
-        ;
     END_FUNCTION
+
 END_NAMESPACE

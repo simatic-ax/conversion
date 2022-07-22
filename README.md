@@ -78,10 +78,12 @@ Strings.ToInt(str : STRING, value => ULINT) : BOOL;
 > Values > MAX ULINT will handled as MOD MAX_ULINT (MAX_ULINT = 18446744073709551615);
 
 
-### Strings.ToArray
+## Strings.ToArray.Of...
+
+### ToArray.OfChar
 
 Description:
-The function `ToArray()` converts a string into a array of CHAR
+The function `ToArray.OfChar()` converts a string into a array of CHAR
 
 - When the string is longer than the array, then the string will be cut. TThe function returns the length of the array.
 - When the string is shorter then the array. The complete string can be copied to the array. The elements behind will not be touched. The function returns the length of the string
@@ -89,14 +91,29 @@ The function `ToArray()` converts a string into a array of CHAR
 - only one dimensional arrays are supported
 
 ```iecst
-Strings.ToArray(str : STRING, arr : ARRAY[*] OF CHAR) : DINT;
+Strings.ToArray.OfCharCount(str : STRING, arr : ARRAY[*] OF CHAR) : DINT;
 ```
 
 |||
 |-|-|
-| ToArray() : DINT | Returns the number of copied characters
+| ToArray.OfCharCount() : DINT | Returns the number of copied characters
 |str : STRING| Source string |
 |arr : ARRAY[*] OF CHAR| Destination array |
+
+### ToArray.OfLint
+
+```
+Strings.ToArray.OfLint(str : STRING, arr : ARRAY[*] of LINT) : BOOL;
+```
+Convert a String "[123, 456, 789]" to an ARRAY[*] OF LINT and returns TRUE if the conversion was successful. If the target array `arr`is to small, the function returns `true`
+
+### ToArray.OfLint
+
+```
+Strings.ToArray.OfLintCount(str : STRING, arr : ARRAY[*] of LINT) : DINT;
+```
+Convert a String "[123, 456, 789]" to an ARRAY[*] OF LINT and returns the number of converted elements,
+
 
 ### Arrays.ToString
 

@@ -17,7 +17,7 @@ NAMESPACE Simatic.Ax.Conversion
 
         {Test}
         METHOD PUBLIC Test_array_and_string_length_is_equal_expect_lenght_10
-            len := Strings.ToArray(s10, a0_9);
+            len := Strings.ToArray.OfCharCount(s10, a0_9);
             Equal(expected := 10, actual := len);
             Equal(expected := '0', actual := a0_9[0]);
             Equal(expected := '1', actual := a0_9[1]);
@@ -27,7 +27,7 @@ NAMESPACE Simatic.Ax.Conversion
 
         {Test}
         METHOD PUBLIC Test_array_starting_with_10_and_string_length_is_equal_expect_lenght_10
-            len := Strings.ToArray(s10, a10_19);
+            len := Strings.ToArray.OfCharCount(s10, a10_19);
             Equal(expected := 10, actual := len);
             Equal(expected := '0', actual := a10_19[10]);
             Equal(expected := '1', actual := a10_19[11]);
@@ -37,7 +37,7 @@ NAMESPACE Simatic.Ax.Conversion
 
         {Test}
         METHOD PUBLIC Test_array_and_string_length_is_longer_expect_lenght_10
-            len := Strings.ToArray(s16, a0_9);
+            len := Strings.ToArray.OfCharCount(s16, a0_9);
             Equal(expected := 10, actual := len);
             Equal(expected := '0', actual := a0_9[0]);
             Equal(expected := '1', actual := a0_9[1]);
@@ -47,7 +47,7 @@ NAMESPACE Simatic.Ax.Conversion
 
         {Test}
         METHOD PUBLIC Test_array_starting_with_10_and_string_length_is_longer_expect_lenght_10
-            len := Strings.ToArray(s16, a10_19);
+            len := Strings.ToArray.OfCharCount(s16, a10_19);
             Equal(expected := 10, actual := len);
             Equal(expected := '0', actual := a10_19[10]);
             Equal(expected := '1', actual := a10_19[11]);
@@ -57,7 +57,7 @@ NAMESPACE Simatic.Ax.Conversion
 
         {Test}
         METHOD PUBLIC Test_array_and_string_length_buffer_is_longer_expect_lenght_10
-            len := Strings.ToArray(s10, a0_12);
+            len := Strings.ToArray.OfCharCount(s10, a0_12);
             Equal(expected := 10, actual := len);
             Equal(expected := '0', actual := a0_12[0]);
             Equal(expected := '1', actual := a0_12[1]);
@@ -67,7 +67,7 @@ NAMESPACE Simatic.Ax.Conversion
             Equal(expected := TO_CHAR(BYTE#0), actual := a0_12[11]);
             Equal(expected := TO_CHAR(BYTE#0), actual := a0_12[12]);
         
-            len := Strings.ToArray(s16, a0_12);
+            len := Strings.ToArray.OfCharCount(s16, a0_12);
             Equal(expected := 13, actual := len);
         END_METHOD
 
@@ -75,7 +75,7 @@ NAMESPACE Simatic.Ax.Conversion
         {Test}
         METHOD PUBLIC Test_array_and_string_length_buffer_is_shorter_expect_lenght_13
         
-            len := Strings.ToArray(s16, a0_12);
+            len := Strings.ToArray.OfCharCount(s16, a0_12);
             Equal(expected := 13, actual := len);
             Equal(expected := '0', actual := a0_12[0]);
             Equal(expected := '1', actual := a0_12[1]);
