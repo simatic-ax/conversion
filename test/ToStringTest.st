@@ -115,7 +115,7 @@ NAMESPACE Simatic.Ax.Conversion
 
         // Blocked by HA-1737
         {Test(v := 1234, expStr := '1234', len := 4)}
-        METHOD PUBLIC Convert_INT_VALUES_ToString_Expect_Value_AsString
+        METHOD PUBLIC Convert_INT_VALUES_ToString_Expect_Value_AsString2
             VAR_INPUT
                 v : LINT;
                 expStr : STRING;
