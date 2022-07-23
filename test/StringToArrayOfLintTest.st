@@ -6,6 +6,7 @@ NAMESPACE Simatic.Ax.Conversion.Strings.ToArray
     CLASS StringToArrayOfLIntTest
         VAR
             arr: ARRAY[0..3] OF LINT;
+            test : LINT;
         END_VAR
 
         {Test}
@@ -76,12 +77,14 @@ NAMESPACE Simatic.Ax.Conversion.Strings.ToArray
                 str: STRING := '[12, 345, 6789, 101112, 1234]';
                 succes: BOOL;
             END_VAR
+            test := 999;
             succes := OfLint(str, arr);
             Equal(TRUE, succes);
             Equal(LINT#12, arr[0]);
             Equal(LINT#345, arr[1]);
             Equal(LINT#6789, arr[2]);
             Equal(LINT#101112, arr[3]);
+            Equal(LINT#999, test);
         END_METHOD
 
         {Test}
@@ -90,11 +93,13 @@ NAMESPACE Simatic.Ax.Conversion.Strings.ToArray
                 str: STRING := '[12, 345, 6789]';
                 succes: BOOL;
             END_VAR
+            test := 999;
             succes := OfLint(str, arr);
             Equal(TRUE, succes);
             Equal(LINT#12, arr[0]);
             Equal(LINT#345, arr[1]);
             Equal(LINT#6789, arr[2]);
+            Equal(LINT#999, test);
         END_METHOD
 
     END_CLASS
