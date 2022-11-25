@@ -20,8 +20,8 @@ devDependencies:
   "@ax/sdk": 3.0.2
   "@simatic-ax/snippetscollection": 0.0.15
 dependencies:
-  "@ax/system-strings": 4.0.1
-  "@ax/system-math": 3.0.1
+  "@ax/system-strings": 4.1.43
+  "@ax/system-math": 3.1.7
 # Registry information, where the package will be published
 registries:
   '@simatic-ax': 'https://npm.pkg.github.com/'
