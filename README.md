@@ -4,7 +4,7 @@
 
 This library provides some functions to convert Integer values to Strings and Strings to Integer values.
 
-## Install this package
+## Install this packager
 
 Enter:
 
