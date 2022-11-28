@@ -4,10 +4,6 @@
 
 This library provides some functions to convert Integer values to Strings and Strings to Integer values.
 
-## Version history
-
-[changelog](changelog.md)
-
 ## Install this package
 
 Enter:
