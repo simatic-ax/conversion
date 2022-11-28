@@ -4,10 +4,6 @@
 
 This library provides some functions to convert Integer values to Strings and Strings to Integer values.
 
-## Version history
-
-[changelog](changelog.md)
-
 ## Install this package
 
 Enter:
@@ -86,7 +82,7 @@ Strings.ToInt(str : STRING, value => ULINT) : BOOL;
 
 > Values > MAX ULINT will handled as MOD MAX_ULINT (MAX_ULINT = 18446744073709551615);
 
-## Strings.ToArray.Of...
+## Strings.ToArray.Of
 
 ### ToArray.OfCharCount
 
