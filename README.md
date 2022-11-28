@@ -86,7 +86,7 @@ Strings.ToInt(str : STRING, value => ULINT) : BOOL;
 
 > Values > MAX ULINT will handled as MOD MAX_ULINT (MAX_ULINT = 18446744073709551615);
 
-## Strings.ToArray.Of...
+## Strings.ToArray.Of
 
 ### ToArray.OfCharCount
 
