@@ -14,20 +14,17 @@ NAMESPACE Simatic.Ax.Conversion
             i : INT;
             digits : INT;
             offset : INT;
+            s : STRING[1];
+            t : ARRAY[0..19] OF CHAR; // MAX: -9223372036854775808
         END_VAR
 
         _value := value;
-        // Prepare the sting with the correct lenght
         digits := CountDigits(value);
-        AnyIntToString := CreateStringWithBlanksOfLength(len := digits);
-
         IF (_value < 0) THEN  // Add sign to 
-            AnyIntToString := CreateStringWithBlanksOfLength(len := digits + 1);
-            AnyIntToString[1] := '-';
+            AnyIntToString := Concat(AnyIntToString, '-');
             offset := 1; // keep space for the sign
         ELSIF (_value > 0 AND (mode AND ConversionMode#FORCE_SIGN) = ConversionMode#FORCE_SIGN) THEN  // Add sign to 
-            AnyIntToString := CreateStringWithBlanksOfLength(len := digits + 1);
-            AnyIntToString[1] := '+';
+            AnyIntToString := Concat(AnyIntToString, '+');
             offset := 1; // keep space for the sign
         ELSE
             offset := 0;
@@ -36,8 +33,12 @@ NAMESPACE Simatic.Ax.Conversion
         FOR i := 0 TO digits - 1 DO
             digit := ABS(TO_INT(_value MOD 10));        
             c := TO_USINT('0') + TO_USINT(digit); 
-            AnyIntToString[digits - i + offset] := TO_CHAR(TO_BYTE(c));
+            t[digits - i - 1] := TO_CHAR(TO_BYTE(c));
             _value := _value / 10;
+        END_FOR;
+        FOR i := 0 TO digits - 1 DO
+            s[1] := t[i];
+            AnyIntToString := Concat(AnyIntToString, s);
         END_FOR;
     END_FUNCTION
 
@@ -53,15 +54,15 @@ NAMESPACE Simatic.Ax.Conversion
             i : INT;
             digits : INT;
             offset : INT;
+            s : STRING[1];
+            t : ARRAY[0..19] OF CHAR; // MAX: -9223372036854775808
         END_VAR
 
         _value := value;
         // Prepare the sting with the correct lenght
         digits := CountDigits(value);
-        ULintToString := CreateStringWithBlanksOfLength(len := digits);
 
         IF (_value > ULINT#0 AND (mode AND ConversionMode#FORCE_SIGN) = ConversionMode#FORCE_SIGN) THEN  // Add sign to 
-            ULintToString := CreateStringWithBlanksOfLength(len := digits + 1);
             ULintToString[1] := '+';
             offset := 1; // keep space for the sign
         ELSE
@@ -71,8 +72,12 @@ NAMESPACE Simatic.Ax.Conversion
         FOR i := 0 TO digits - 1 DO
             digit := ABS(TO_INT(_value MOD UINT#10));        
             c := TO_USINT('0') + TO_USINT(digit); 
-            ULintToString[digits - i + offset] := TO_CHAR(TO_BYTE(c));
+            t[digits - i - 1] := TO_CHAR(TO_BYTE(c));
             _value := _value / UINT#10;
+        END_FOR;
+        FOR i := 0 TO digits - 1 DO
+            s[1] := t[i];
+            ULintToString := Concat(ULintToString, s);
         END_FOR;
     END_FUNCTION
 END_NAMESPACE
