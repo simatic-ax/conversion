@@ -54,6 +54,8 @@ NAMESPACE Simatic.Ax.Conversion
             i : INT;
             digits : INT;
             offset : INT;
+            s : STRING[1];
+            t : ARRAY[0..19] OF CHAR; // MAX: -9223372036854775808
         END_VAR
 
         _value := value;
@@ -70,8 +72,12 @@ NAMESPACE Simatic.Ax.Conversion
         FOR i := 0 TO digits - 1 DO
             digit := ABS(TO_INT(_value MOD UINT#10));        
             c := TO_USINT('0') + TO_USINT(digit); 
-            ULintToString[digits - i + offset] := TO_CHAR(TO_BYTE(c));
+            t[digits - i - 1] := TO_CHAR(TO_BYTE(c));
             _value := _value / UINT#10;
+        END_FOR;
+        FOR i := 0 TO digits - 1 DO
+            s[1] := t[i];
+            ULintToString := Concat(ULintToString, s);
         END_FOR;
     END_FUNCTION
 END_NAMESPACE
