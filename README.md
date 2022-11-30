@@ -4,7 +4,7 @@
 
 This library provides some functions to convert Integer values to Strings and Strings to Integer values.
 
-## Install this package
+## Install this package tesxt
 
 Enter:
 
@@ -12,7 +12,7 @@ Enter:
 apax add @simatic-ax/conversion
 ```
 
-> to install this package you need to login into the GitHub registry. You'll find more information [here](https://github.com/simatic-ax/.sharedstuff/blob/main/doc/personalaccesstoken.md)
+> to install this package you need to login into the GitHub registry. You'll find more information [here](https://github.com/simatic-ax/.github/blob/main/docs/personalaccesstoken.md)
 
 ## Namespace
 
