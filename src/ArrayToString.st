@@ -1,6 +1,7 @@
 USING System.Strings;
 
 NAMESPACE Simatic.Ax.Conversion.Arrays
+    // add a new comment
     FUNCTION ToString : STRING
         VAR_INPUT
             arr : ARRAY[*] OF CHAR;
