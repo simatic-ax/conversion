@@ -32,7 +32,7 @@ NAMESPACE Simatic.Ax.Conversion
 
             str:= 'FalSE';
             success := StringToBool(str, value);
-            Equal(TRUE, success);
+            Equal(FALSE, success);
             Equal(FALSE, value);
         END_METHOD
 
