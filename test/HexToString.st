@@ -33,7 +33,7 @@ NAMESPACE Simatic.Ax.Conversion
                 s : STRING;
             END_VAR
 
-            s := HTA(b);
+            s := ByteToString(b);
             Equal(expected := hex, actual := s);
             
         END_METHOD
