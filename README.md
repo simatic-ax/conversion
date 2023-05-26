@@ -38,14 +38,6 @@ END_NAMESPACE
 |-|-|-|
 |NONE       | Integer.ToString(value := 123) | '123'
 |FORCE_SIGN | Integer.ToString(value := 123, mode := ConversionMode#FORCE_SIGN) | '+123'
-<!-- |FORCE_LEADING_ZEROS | Integer.ToString(value := INT#123)  | '+00123' 
-|FORCE_LEADING_ZEROS | Integer.ToString(value := DINT#123) | '+0000000123'  -->
-
-<!-- > Modes can be combined. Example:
-> ```
-> Integer.ToString(value := 123, mode := ConversionMode#FORCE_SIGN) 
-> ```
->  -->
 
 ## Functions
 
@@ -152,6 +144,15 @@ Convert a String "[123, 456, 789]" to an ARRAY[*] OF LINT and returns the number
 > - startIdx > endIdx
 > - startIdx out of the array boundaries startIdx : 1 and Array[5..10]
 > - endIdx out of the array boundaries endIdx : 15 and Array[0..10]
+
+## TRUNC
+
+TRUNC() round a floating number no the next DINT value downwards zo zero
+
+```iecst
+TRUNC(value : LREAL) : DINT;
+TRUNC(value : REAL) : DINT;
+```
 
 ## Contribution
 
