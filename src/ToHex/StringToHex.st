@@ -2,7 +2,7 @@ USING System.Strings;
 
 NAMESPACE Simatic.Ax.Conversion.Strings
 
-    /// This function convert a string contining a hex number into a hex number
+    /// This function convert a string containing a hex number into a hex number
     /// Example 'a231' --> WORD#16#a231
     /// Return values:
     /// WORD#16#0000 no error
