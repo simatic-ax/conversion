@@ -82,7 +82,24 @@ Strings.ToInt(str : STRING, value => ULINT) : BOOL;
 
 > Values > MAX ULINT will handled as MOD MAX_ULINT (MAX_ULINT = 18446744073709551615);
 
-## Strings.ToArray.Of
+## Strings
+
+### Strings.ToHex
+
+This function convert a string containing a hex number into a hex number
+
+Example:
+
+```iec-st
+    ret := Strings.ToHex(str := 'a231', n := 4, result => res);  // res = WORD#16#a231
+```
+
+| ReturnValue  | Explanation                                                |
+|--------------|------------------------------------------------------------|
+| WORD#16#0000 |  no error                                                  |
+| WORD#16#0007 |  invalid character                                         |
+| WORD#16#8182 |  Input buffer is too small for data in the N parameter     |
+| WORD#16#8482 |  Output buffer is too small for data in the N parameter    |
 
 ### ToArray.OfCharCount
 
@@ -139,6 +156,15 @@ Convert a String "[123, 456, 789]" to an ARRAY[*] OF LINT and returns the number
 ## Contribution
 
 Thanks for your interest in contributing. Anybody is free to report bugs, unclear documentation, and other problems regarding this repository in the Issues section or, even better, is free to propose any changes to this repository using Merge Requests.
+
+## Markdownlint-cli
+
+This workspace will be checked by the [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli) (there is also documented ho to install the tool) tool in the CI workflow automatically.  
+To avoid, that the CI workflow fails because of the markdown linter, you can check all markdown files locally by running the markdownlint with:
+
+```sh
+markdownlint **/*.md --fix
+```
 
 ## License and Legal information
 
