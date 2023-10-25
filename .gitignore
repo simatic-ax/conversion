@@ -4,4 +4,4 @@ bin
 obj
 TestResult
 *.tgz
-temp
+assets
