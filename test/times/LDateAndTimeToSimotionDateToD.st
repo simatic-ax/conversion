@@ -1,7 +1,7 @@
 NAMESPACE Simatic.Ax.Conversion.Times
     
     {TestFixture}
-    CLASS Test_LDateAndTimeToSimotionDateToD
+    CLASS TestLDateAndTimeToSimotionDateToD
 
         {Test}
         METHOD PUBLIC CheckStartTime
