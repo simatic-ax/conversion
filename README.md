@@ -7,7 +7,7 @@ This library provides some functions to convert various data types and formats i
 Currently, there are two categories:
 
 - Converting integer values to Strings and Strings to Integer values
-- Converting time formats from different systems 
+- Converting time formats from different systems
 
 ## Install this package
 
@@ -34,7 +34,7 @@ Simatic.Ax.Conversion.Times;
 NAMESPACE Simatic.Ax.Conversion
     TYPE
         ConversionMode : WORD (
-            NONE := WORD#16#0000, 
+            NONE := WORD#16#0000,
             FORCE_SIGN := WORD#16#0001
     END_TYPE
 END_NAMESPACE
@@ -44,12 +44,12 @@ END_NAMESPACE
 |-|-|-|
 |NONE       | Integer.ToString(value := 123) | '123'
 |FORCE_SIGN | Integer.ToString(value := 123, mode := ConversionMode#FORCE_SIGN) | '+123'
-<!-- |FORCE_LEADING_ZEROS | Integer.ToString(value := INT#123)  | '+00123' 
+<!-- |FORCE_LEADING_ZEROS | Integer.ToString(value := INT#123)  | '+00123'
 |FORCE_LEADING_ZEROS | Integer.ToString(value := DINT#123) | '+0000000123'  -->
 
 <!-- > Modes can be combined. Example:
 > ```
-> Integer.ToString(value := 123, mode := ConversionMode#FORCE_SIGN) 
+> Integer.ToString(value := 123, mode := ConversionMode#FORCE_SIGN)
 > ```
 >  -->
 
@@ -182,7 +182,7 @@ Thanks for your interest in contributing. Anybody is free to report bugs, unclea
 
 ## Markdownlint-cli
 
-This workspace will be checked by the [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli) (there is also documented ho to install the tool) tool in the CI workflow automatically.  
+This workspace will be checked by the [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli) (there is also documented ho to install the tool) tool in the CI workflow automatically.
 To avoid, that the CI workflow fails because of the markdown linter, you can check all markdown files locally by running the markdownlint with:
 
 ```sh
