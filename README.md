@@ -2,9 +2,13 @@
 
 ## Description
 
-This library provides some functions to convert Integer values to Strings and Strings to Integer values.
+This library provides some functions to convert various data types and formats into other formats that are not covered by the built-in functionalities.
 
-## Install this package tesxt
+Currently, there are two categories:
+- Converting integer values to Strings and Strings to Integer values
+- Converting time formats from different systems 
+
+## Install this package
 
 Enter:
 
@@ -20,9 +24,10 @@ apax add @simatic-ax/conversion
 Simatic.Ax.Conversion;
 Simatic.Ax.Conversion.Integer;
 Simatic.Ax.Conversion.Strings;
+Simatic.Ax.Conversion.Times;
 ```
 
-## ConversionMode
+## ConversionMode for strings
 
 ```iecst
 NAMESPACE Simatic.Ax.Conversion
@@ -81,6 +86,14 @@ Strings.ToInt(str : STRING, value => ULINT) : BOOL;
 ```
 
 > Values > MAX ULINT will handled as MOD MAX_ULINT (MAX_ULINT = 18446744073709551615);
+
+### Simotion Date and Time of Day <--> LDT
+
+```iecst
+
+LDateAndTimeToSimotionDateToD(SimaticTime : LDATE_AND_TIME, SimotionTime => DWORD, SimotionDate => DWORD);
+SimotionDateToDToLDateAndTime(SimotionTime := DWORD, SimotionDate := DWORD) : LDATE_AND_TIME;
+```
 
 ## Strings
 
@@ -152,6 +165,15 @@ Convert a String "[123, 456, 789]" to an ARRAY[*] OF LINT and returns the number
 > - startIdx > endIdx
 > - startIdx out of the array boundaries startIdx : 1 and Array[5..10]
 > - endIdx out of the array boundaries endIdx : 15 and Array[0..10]
+
+### Times
+
+Convert the date and time of a SIMOTION system into the data type LDATE_AND_TIME (LDT) and back. The SIMOTION format is a structured data type consisting of two 32-bit values. For the sake of simplicity, they are interpeted as DWORD.
+|||
+|-|-|
+|SimotionTime : DWORD|Milliseconds that have passed on the current day|
+|SimotionDate : DWORD|Days that have passed since 1992-01-01|
+|SimaticTime : LDATE_AND_TIME|Nanoseconds that have passed since 1970-01-01-00:00:00.000|
 
 ## Contribution
 

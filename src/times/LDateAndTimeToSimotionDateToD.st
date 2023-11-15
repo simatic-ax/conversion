@@ -1,6 +1,6 @@
 USING System.DateTime;
 NAMESPACE Simatic.Ax.Conversion.Times
-    FUNCTION LDateAndTimeToSimotionDateToD
+    FUNCTION LDateAndTimeToSimotionDateTime
         VAR_INPUT
             SimaticTime : LDATE_AND_TIME;
         END_VAR

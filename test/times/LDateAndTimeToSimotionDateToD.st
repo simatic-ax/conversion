@@ -1,7 +1,7 @@
 NAMESPACE Simatic.Ax.Conversion.Times
     
     {TestFixture}
-    CLASS TestLDateAndTimeToSimotionDateToD
+    CLASS TestLDateAndTimeToSimotionDateTime
 
         {Test}
         METHOD PUBLIC CheckStartTime
@@ -11,7 +11,7 @@ NAMESPACE Simatic.Ax.Conversion.Times
                 simotionDate : DWORD;
                 simotionTime : DWORD;
             END_VAR
-            LDateAndTimeToSimotionDateToD(inputTimestamp, simotionTime, simotionDate);
+            LDateAndTimeToSimotionDateTime(inputTimestamp, simotionTime, simotionDate);
             AxUnit.Assert.Equal(simotionTime , DWORD#1);
             AxUnit.Assert.Equal(simotionDate , DWORD#1);
         END_METHOD
@@ -24,7 +24,7 @@ NAMESPACE Simatic.Ax.Conversion.Times
                 simotionTime : DWORD;
             END_VAR
 
-            LDateAndTimeToSimotionDateToD(SimaticTime := inputTimestamp, simotionTime => simotionTime, simotionDate => simotionDate);
+            LDateAndTimeToSimotionDateTime(SimaticTime := inputTimestamp, simotionTime => simotionTime, simotionDate => simotionDate);
             //the values have been read from a simotion plc and converted, so they proven to be valid
             AxUnit.Assert.Equal(simotionTime , DWORD#57423483);
             AxUnit.Assert.Equal(simotionDate , DWORD#11627);
