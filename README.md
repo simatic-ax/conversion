@@ -5,6 +5,7 @@
 This library provides some functions to convert various data types and formats into other formats that are not covered by the built-in functionalities.
 
 Currently, there are two categories:
+
 - Converting integer values to Strings and Strings to Integer values
 - Converting time formats from different systems 
 
