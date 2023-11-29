@@ -33,3 +33,5 @@ files:
   - 'snippets'
   - 'doc'
   - 'src' # ship library with source
+installStrategy: strict
+apaxVersion: 3.0.0
