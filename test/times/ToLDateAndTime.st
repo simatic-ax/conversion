@@ -8,10 +8,11 @@ NAMESPACE Simatic.Ax.Conversion.Times
             //test with 1ms added from initial time
             VAR_TEMP
                 timestamp : LDATE_AND_TIME;
-                simotionDate : DWORD := DWORD#1;
-                simotionTime : DWORD := DWORD#1;
+                SimotionDateTime : SimotionDateTime;
             END_VAR
-            timestamp := SimotionDateTimeToLDateAndTime(SimotionTime := simotionTime, SimotionDate := simotionDate);
+            SimotionDateTime.SimotionDate := DWORD#1;
+            SimotionDateTime.SimotionTime := DWORD#1;
+            timestamp := SToLDateAndTime(SimotionDateTime);
             AxUnit.Assert.Equal(timestamp = LDATE_AND_TIME#1992-01-01-00:00:00.001, TRUE);
         END_METHOD
     
@@ -19,10 +20,11 @@ NAMESPACE Simatic.Ax.Conversion.Times
         METHOD PUBLIC CheckCurrentTime
             VAR_TEMP
                 timestamp : LDATE_AND_TIME;
-                simotionDate : DWORD := DWORD#11627;
-                simotionTime : DWORD := DWORD#57423483;
+                SimotionDateTime : SimotionDateTime;
             END_VAR
-            timestamp := SimotionDateTimeToLDateAndTime(SimotionTime := simotionTime, SimotionDate := simotionDate);
+            SimotionDateTime.SimotionDate := DWORD#11627;
+            SimotionDateTime.SimotionTime := DWORD#57423483;
+            timestamp := SToLDateAndTime(SimotionDateTime);
             //the values have been read from a simotion plc and converted, so they proven to be valid
             AxUnit.Assert.Equal(timestamp = LDT#2023-10-31-15:57:03.483, TRUE);
     

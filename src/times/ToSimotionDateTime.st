@@ -1,12 +1,8 @@
 USING System.DateTime;
 NAMESPACE Simatic.Ax.Conversion.Times
-    FUNCTION LDateAndTimeToSimotionDateTime
+    FUNCTION ToSimotionDateTime : SimotionDateTime
         VAR_INPUT
             SimaticTime : LDATE_AND_TIME;
-        END_VAR
-        VAR_OUTPUT
-            SimotionTime : DWORD;
-            SimotionDate : DWORD;
         END_VAR
 
         VAR_TEMP
@@ -83,8 +79,8 @@ NAMESPACE Simatic.Ax.Conversion.Times
         //add days from current month
         elapsedDays := elapsedDays + actDays;
 
-        SimotionDate := TO_DWORD(elapsedDays);
-        SimotionTime := TO_DWORD (TO_UDINT(actMillisecond) + UDINT#1000 * (TO_UDINT(actSecond) + UDINT#60 * (TO_UDINT(actMinute + 60 * ( actHour)))));
+        ToSimotionDateTime.SimotionDate := TO_DWORD(elapsedDays);
+        ToSimotionDateTime.SimotionTime := TO_DWORD (TO_UDINT(actMillisecond) + UDINT#1000 * (TO_UDINT(actSecond) + UDINT#60 * (TO_UDINT(actMinute + 60 * ( actHour)))));
 
     END_FUNCTION
 

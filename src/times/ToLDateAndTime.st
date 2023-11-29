@@ -1,11 +1,10 @@
 USING System.DateTime;
 NAMESPACE Simatic.Ax.Conversion.Times
 
-    FUNCTION SimotionDateTimeToLDateAndTime : LDATE_AND_TIME
+    FUNCTION SToLDateAndTime : LDATE_AND_TIME
 
         VAR_INPUT
-         SimotionTime : DWORD;
-         SimotionDate : DWORD;
+         SimotionDateTime : SimotionDateTime;
         END_VAR
 
         VAR_TEMP
@@ -21,11 +20,11 @@ NAMESPACE Simatic.Ax.Conversion.Times
            NANOSECOND : UDINT;
         END_VAR
 
-        u32Date := TO_UDINT(SimotionDate);// + UDINT#1;
+        u32Date := TO_UDINT(SimotionDateTime.SimotionDate);// + UDINT#1;
 
          // calculation of hours
-         HOUR := TO_UDINT(SimotionTime) / UDINT#3600000;
-         b32AuxHours := TO_UDINT(SimotionTime) - HOUR * UDINT#3600000;
+         HOUR := TO_UDINT(SimotionDateTime.SimotionTime) / UDINT#3600000;
+         b32AuxHours := TO_UDINT(SimotionDateTime.SimotionTime) - HOUR * UDINT#3600000;
 
          // calculation of minutes
          MINUTE := b32AuxHours / UDINT#60000;
@@ -34,7 +33,7 @@ NAMESPACE Simatic.Ax.Conversion.Times
          SECOND :=  (b32AuxHours - MINUTE * UDINT#60000) / UDINT#1000;
 
          // calculation of mseconds
-         NANOSECOND := ( TO_UDINT(SimotionTime) - (HOUR *  UDINT#3600000) - (MINUTE *  UDINT#60000) - (SECOND *  UDINT#1000)) *  UDINT#1000000;
+         NANOSECOND := ( TO_UDINT(SimotionDateTime.SimotionTime) - (HOUR *  UDINT#3600000) - (MINUTE *  UDINT#60000) - (SECOND *  UDINT#1000)) *  UDINT#1000000;
 
          //Reset values to calculate actual year
          u32Year :=  UDINT#1991;
@@ -125,7 +124,7 @@ NAMESPACE Simatic.Ax.Conversion.Times
                      minute := to_int(MINUTE),
                      second := to_int(second),
                      millisecond := to_int(NANOSECOND/UDINT#1000000),
-                     value => SimotionDateTimeToLDateAndTime);
+                     value => SToLDateAndTime);
 
     END_FUNCTION
 

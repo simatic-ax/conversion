@@ -170,6 +170,18 @@ Convert a String "[123, 456, 789]" to an ARRAY[*] OF LINT and returns the number
 ### Times
 
 Convert the date and time of a SIMOTION system into the data type LDATE_AND_TIME (LDT) and back. The SIMOTION format is a structured data type consisting of two 32-bit values. For the sake of simplicity, they are interpeted as DWORD.
+
+```iecst
+NAMESPACE Simatic.Ax.Conversion.Times
+    TYPE 
+        SimotionDateTime : STRUCT
+            SimotionTime : DWORD;
+            SimotionDate : DWORD;
+        END_STRUCT;
+    END_TYPE
+END_NAMESPACE
+```
+
 |||
 |-|-|
 |SimotionTime : DWORD|Milliseconds that have passed on the current day|
