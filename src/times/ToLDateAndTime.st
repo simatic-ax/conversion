@@ -1,7 +1,7 @@
 USING System.DateTime;
 NAMESPACE Simatic.Ax.Conversion.Times
 
-    FUNCTION SToLDateAndTime : LDATE_AND_TIME
+    FUNCTION ToLDateAndTime : LDATE_AND_TIME
 
         VAR_INPUT
          SimotionDateTime : SimotionDateTime;
@@ -124,7 +124,7 @@ NAMESPACE Simatic.Ax.Conversion.Times
                      minute := to_int(MINUTE),
                      second := to_int(second),
                      millisecond := to_int(NANOSECOND/UDINT#1000000),
-                     value => SToLDateAndTime);
+                     value => ToLDateAndTime);
 
     END_FUNCTION
 
