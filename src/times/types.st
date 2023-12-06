@@ -2,8 +2,8 @@ NAMESPACE Simatic.Ax.Conversion.Times
 
     TYPE 
         SimotionDateTime : STRUCT
-            SimotionTime : DWORD;
             SimotionDate : DWORD;
+            SimotionTime : DWORD;
         END_STRUCT;
     END_TYPE
 
