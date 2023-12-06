@@ -51,11 +51,11 @@ NAMESPACE Simatic.Ax.Conversion
             
             _str := Arrays.ToString(arr := array_0_9);
             Equal(expected := 10, actual := LengthOf(_str));
-            Equal(expected := exp_0_9, actual := _str);
+            Equal(expected := TRUE, actual := _str = exp_0_9);
 
             _str := Arrays.ToString(arr := array_1_10);
             Equal(expected := 10, actual := LengthOf(_str));
-            Equal(expected := exp_1_10, actual := _str);
+            Equal(expected := TRUE, actual := _str = exp_1_10);
             ;
         END_METHOD
 
