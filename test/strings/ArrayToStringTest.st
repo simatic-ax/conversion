@@ -47,15 +47,17 @@ NAMESPACE Simatic.Ax.Conversion
         METHOD PUBLIC Test_Array_ToString_without_indices_and_expect_full_string
             VAR_TEMP
                 _str : STRING;
+                array_0_9_test : string := '0123456789';
+                array_1_10_test : string := '1234567890';
             END_VAR
             
             _str := Arrays.ToString(arr := array_0_9);
             Equal(expected := 10, actual := LengthOf(_str));
-            Equal(expected := exp_0_9, actual := _str);
+            Equal(expected := TRUE, actual := _str = array_0_9_test);
 
             _str := Arrays.ToString(arr := array_1_10);
             Equal(expected := 10, actual := LengthOf(_str));
-            Equal(expected := exp_1_10, actual := _str);
+            Equal(expected := TRUE, actual := _str = array_1_10_test);
             ;
         END_METHOD
 

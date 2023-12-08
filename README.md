@@ -2,9 +2,14 @@
 
 ## Description
 
-This library provides some functions to convert Integer values to Strings and Strings to Integer values.
+This library provides some functions to convert various data types and formats into other formats that are not covered by the built-in functionalities.
 
-## Install this package tesxt
+Currently, there are two categories:
+
+- Converting integer values to Strings and Strings to Integer values
+- Converting time formats from different systems
+
+## Install this package
 
 Enter:
 
@@ -20,15 +25,16 @@ apax add @simatic-ax/conversion
 Simatic.Ax.Conversion;
 Simatic.Ax.Conversion.Integer;
 Simatic.Ax.Conversion.Strings;
+Simatic.Ax.Conversion.Times;
 ```
 
-## ConversionMode
+## ConversionMode for strings
 
 ```iecst
 NAMESPACE Simatic.Ax.Conversion
     TYPE
         ConversionMode : WORD (
-            NONE := WORD#16#0000, 
+            NONE := WORD#16#0000,
             FORCE_SIGN := WORD#16#0001
     END_TYPE
 END_NAMESPACE
@@ -73,6 +79,14 @@ Strings.ToInt(str : STRING, value => ULINT) : BOOL;
 ```
 
 > Values > MAX ULINT will handled as MOD MAX_ULINT (MAX_ULINT = 18446744073709551615);
+
+### Simotion Date and Time of Day <--> LDT
+
+```iecst
+
+LDateAndTimeToSimotionDateToD(SimaticTime : LDATE_AND_TIME, SimotionTime => DWORD, SimotionDate => DWORD);
+SimotionDateToDToLDateAndTime(SimotionTime := DWORD, SimotionDate := DWORD) : LDATE_AND_TIME;
+```
 
 ## Strings
 
@@ -147,12 +161,33 @@ Convert a String "[123, 456, 789]" to an ARRAY[*] OF LINT and returns the number
 
 ## TRUNC
 
-TRUNC() round a floating number no the next DINT value downwards zo zero
+TRUNC() round a floating number no the next DINT value downwards to zero
 
 ```iecst
 TRUNC(value : LREAL) : DINT;
 TRUNC(value : REAL) : DINT;
 ```
+
+### Times
+
+Convert the date and time of a SIMOTION system into the data type LDATE_AND_TIME (LDT) and back. The SIMOTION format is a structured data type consisting of two 32-bit values. For the sake of simplicity, they are interpeted as DWORD.
+
+```iecst
+NAMESPACE Simatic.Ax.Conversion.Times
+    TYPE 
+        SimotionDateTime : STRUCT
+            SimotionTime : DWORD;
+            SimotionDate : DWORD;
+        END_STRUCT;
+    END_TYPE
+END_NAMESPACE
+```
+
+|||
+|-|-|
+|SimotionTime : DWORD|Milliseconds that have passed on the current day|
+|SimotionDate : DWORD|Days that have passed since 1992-01-01|
+|SimaticTime : LDATE_AND_TIME|Nanoseconds that have passed since 1970-01-01-00:00:00.000|
 
 ## Contribution
 
@@ -160,7 +195,7 @@ Thanks for your interest in contributing. Anybody is free to report bugs, unclea
 
 ## Markdownlint-cli
 
-This workspace will be checked by the [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli) (there is also documented ho to install the tool) tool in the CI workflow automatically.  
+This workspace will be checked by the [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli) (there is also documented ho to install the tool) tool in the CI workflow automatically.
 To avoid, that the CI workflow fails because of the markdown linter, you can check all markdown files locally by running the markdownlint with:
 
 ```sh
