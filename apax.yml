@@ -16,6 +16,9 @@ variables:
 targets:
   - '1500'
   - 'llvm'
+# Install settings
+installStrategy: strict
+apaxVersion: 3.2.1
 # Dependencies
 devDependencies:
   "@ax/sdk": 2405.0.0
@@ -34,5 +37,3 @@ files:
   - 'snippets'
   - 'doc'
   - 'src' # ship library with source
-installStrategy: strict
-apaxVersion: 3.0.0
