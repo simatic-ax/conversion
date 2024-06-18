@@ -9,6 +9,9 @@ description: Functions for String conversion
 repository:
   type: git
   url: https://github.com/simatic-ax/conversion
+# Registry information, where the package will be published
+registries:
+  '@simatic-ax': 'https://npm.pkg.github.com/'
 # Environment variables
 variables:
   APAX_BUILD_ARGS:
@@ -16,7 +19,7 @@ variables:
 targets:
   - '1500'
   - 'llvm'
-# Install settings
+# Install Setting
 installStrategy: strict
 apaxVersion: 3.2.1
 # Dependencies
@@ -26,9 +29,6 @@ devDependencies:
 dependencies:
   "@ax/system-strings": 7.0.17
   "@ax/system-math": 7.0.17
-# Registry information, where the package will be published
-registries:
-  '@simatic-ax': 'https://npm.pkg.github.com/'
 # Files, which will be shipped with the library
 files:
   - 'README.md'
