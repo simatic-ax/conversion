@@ -27,14 +27,14 @@ NAMESPACE AxUnit.Assert
         IF result THEN
             axunit_Succeed();
         ELSE
-            messageOnFail := Concat('Expected [', ByteToString(actual[1]), ', ');
-            messageOnFail := Concat(messageOnFail, ByteToString(actual[2]), ', ');
-            messageOnFail := Concat(messageOnFail, ByteToString(actual[3]), ', ');
-            messageOnFail := Concat(messageOnFail, ByteToString(actual[4]), '] ');
-            messageOnFail := Concat(messageOnFail, 'but found: [', ByteToString(expected[1]), ', ');
+            messageOnFail := Concat('Expected [', ByteToString(expected[1]), ', ');
             messageOnFail := Concat(messageOnFail, ByteToString(expected[2]), ', ');
             messageOnFail := Concat(messageOnFail, ByteToString(expected[3]), ', ');
-            messageOnFail := Concat(messageOnFail, ByteToString(expected[4]), ']');
+            messageOnFail := Concat(messageOnFail, ByteToString(expected[4]), '] ');
+            messageOnFail := Concat(messageOnFail, 'but found: [', ByteToString(actual[1]), ', ');
+            messageOnFail := Concat(messageOnFail, ByteToString(actual[2]), ', ');
+            messageOnFail := Concat(messageOnFail, ByteToString(actual[3]), ', ');
+            messageOnFail := Concat(messageOnFail, ByteToString(actual[4]), ']');
             axunit_Fail(messageOnFail, file, line);
         END_IF;
 

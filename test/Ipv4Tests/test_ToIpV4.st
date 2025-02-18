@@ -2,9 +2,9 @@ USING Siemens.Simatic.S71500.IPConfiguration;
 USING AxUnit.Assert;
 NAMESPACE Ipv4Tests
     {TestFixture}
-    CLASS MyTestFixture
+    CLASS TestToIp4v
         {Test}
-        METHOD PUBLIC MyTestMethod
+        METHOD PUBLIC Test_valid_ip_address
             VAR
                 result : BOOL;
                 ipv4 : IP_V4;
