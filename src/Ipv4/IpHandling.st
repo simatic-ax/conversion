@@ -12,31 +12,48 @@ NAMESPACE Simatic.Ax.Conversion
             _isValid : BOOL;
         END_VAR
 
+        // Public Methods
         METHOD PUBLIC SetIpAddress : BOOL
             VAR_INPUT
                 ipAddress : STRING;
             END_VAR
             _isValid := THIS._ToIpV4(ipAddress := ipAddress, ipV4 => _ipv4);
-            IF (_isValid) THEN
-                this._GetPort(ipAddress := ipAddress, Port => _port);
-                _isSecure := this.IsHttps();
+            IF _isValid THEN
+                THIS._GetPort(ipAddress := ipAddress, Port => _port);
+                _isSecure := THIS._IsHttps(ipAddress := ipAddress);
             END_IF;
             SetIpAddress := _isValid;
         END_METHOD
 
+        METHOD PUBLIC GetIpAddress : IP_V4
+            GetIpAddress := _ipv4;
+        END_METHOD
+
+        METHOD PUBLIC SetPort : BOOL
+            VAR_INPUT
+                portNumber : UINT;
+            END_VAR
+            _port := portNumber;
+        END_METHOD
+
+        METHOD PUBLIC GetPort : UINT
+            GetPort := _port;
+        END_METHOD
+
+        METHOD PUBLIC IsSecure : BOOL
+            IsSecure := _isSecure;
+        END_METHOD
+
+        // Private Methods
         METHOD PRIVATE _ToIpV4 : BOOL
             VAR_INPUT  
                 ipAddress : STRING;  
-            END_VAR  
-            VAR  
-                cleanedIpAddress : STRING;  
             END_VAR  
             VAR_OUTPUT
                 ipV4 : IP_V4;  
             END_VAR
             
-            cleanedIpAddress := this._CleanIpAddress(ipAddress);
-            _ToIpV4 := THIS._ConvertToIpV4(cleanedIpAddress, ipV4);
+            _ToIpV4 := THIS._ConvertToIpV4(THIS._CleanIpAddress(ipAddress), ipV4);
         END_METHOD  
         
         METHOD PRIVATE _CleanIpAddress : STRING
@@ -120,16 +137,15 @@ NAMESPACE Simatic.Ax.Conversion
         
         METHOD PRIVATE _GetPort : BOOL
             VAR_INPUT
-            ipAddress : STRING;
+                ipAddress : STRING;
             END_VAR
             VAR_OUTPUT
-            port : UINT;
+                port : UINT;
             END_VAR
-            
             VAR
-            portPos : INT;
-            portStr : STRING;
-            portInt : UINT;
+                portPos : INT;
+                portStr : STRING;
+                portInt : UINT;
             END_VAR
             
             portPos := PositionOf(ipAddress, ':');
@@ -151,51 +167,20 @@ NAMESPACE Simatic.Ax.Conversion
             END_IF;
         END_METHOD
 
-        METHOD IsHttp : BOOL
+        METHOD PRIVATE _IsHttp : BOOL
             VAR_INPUT
                 ipAddress : STRING;
             END_VAR
-            IF PositionOf(ipAddress, 'http://') = 1 THEN
-                IsHttp := TRUE;
-            ELSE
-                IsHttp := FALSE;
-            END_IF;
+            _IsHttp := PositionOf(ipAddress, 'http://') = 1;
         END_METHOD
         
-        METHOD IsHttps : BOOL
+        METHOD PRIVATE _IsHttps : BOOL
             VAR_INPUT
                 ipAddress : STRING;
             END_VAR
-            IF PositionOf(ipAddress, 'https://') = 1 THEN
-                IsHttps := TRUE;
-            ELSE
-                IsHttps := FALSE;
-            END_IF;
-        END_METHOD
-    
-
-        METHOD PUBLIC GetIpAddress : IP_V4
-            GetIpAddress := _ipv4;
-            ;
+            _IsHttps := PositionOf(ipAddress, 'https://') = 1;
         END_METHOD
 
-        METHOD SetPort : BOOL
-            VAR_INPUT
-                portNumber : INT;
-            END_VAR
-            // Implementation to set the port number
-            ;
-        END_METHOD
-
-        METHOD PUBLIC GetPort : UINT
-            GetPort := _port;
-            ;
-        END_METHOD
-
-        METHOD IsSecure : BOOL
-            IsSecure := _isSecure;
-            ;
-        END_METHOD
     END_CLASS
 
 END_NAMESPACE
