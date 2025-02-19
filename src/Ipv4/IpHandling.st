@@ -3,16 +3,19 @@ USING System.Strings;
 
 NAMESPACE Simatic.Ax.Conversion
 
+    // Class for handling IP address operations
     CLASS IpHandling
         VAR
-            _ipAddress : STRING;
-            _port : UINT;
-            _isSecure : BOOL;
-            _ipv4 : IP_V4;
-            _isValid : BOOL;
+            _ipAddress : STRING; // Stores the IP address
+            _port : UINT; // Stores the port number
+            _isSecure : BOOL; // Indicates if the connection is secure (HTTPS)
+            _ipv4 : IP_V4; // Stores the IPv4 address
+            _isValid : BOOL; // Indicates if the IP address is valid
         END_VAR
 
-        // Public Methods
+        /// Sets the IP address and validates it
+        /// @param ipAddress The IP address to set
+        /// @return TRUE if the IP address is valid, FALSE otherwise
         METHOD PUBLIC SetIpAddress : BOOL
             VAR_INPUT
                 ipAddress : STRING;
@@ -25,10 +28,15 @@ NAMESPACE Simatic.Ax.Conversion
             SetIpAddress := _isValid;
         END_METHOD
 
+        /// Gets the IPv4 address
+        /// @return The IPv4 address
         METHOD PUBLIC GetIpAddress : IP_V4
             GetIpAddress := _ipv4;
         END_METHOD
 
+        /// Sets the port number
+        /// @param portNumber The port number to set
+        /// @return TRUE if the port number is valid, FALSE otherwise
         METHOD PUBLIC SetPort : BOOL
             VAR_INPUT
                 portNumber : UINT;
@@ -36,10 +44,14 @@ NAMESPACE Simatic.Ax.Conversion
             _port := portNumber;
         END_METHOD
 
+        /// Gets the port number
+        /// @return The port number
         METHOD PUBLIC GetPort : UINT
             GetPort := _port;
         END_METHOD
 
+        /// Checks if the connection is secure (HTTPS)
+        /// @return TRUE if the connection is secure, FALSE otherwise
         METHOD PUBLIC IsSecure : BOOL
             IsSecure := _isSecure;
         END_METHOD
@@ -56,6 +68,9 @@ NAMESPACE Simatic.Ax.Conversion
             _ToIpV4 := THIS._ConvertToIpV4(THIS._CleanIpAddress(ipAddress), ipV4);
         END_METHOD  
         
+        /// Cleans the IP address by removing protocol and port
+        /// @param ipAddress The IP address to clean
+        /// @return The cleaned IP address
         METHOD PRIVATE _CleanIpAddress : STRING
             VAR_INPUT
                 ipAddress : STRING;  
@@ -83,6 +98,10 @@ NAMESPACE Simatic.Ax.Conversion
             _CleanIpAddress := cleanedIpAddress;
         END_METHOD
         
+        /// Converts a cleaned IP address to an IPv4 address
+        /// @param ipAddress The cleaned IP address to convert
+        /// @param ipV4 The converted IPv4 address
+        /// @return TRUE if the conversion is successful, FALSE otherwise
         METHOD PRIVATE _ConvertToIpV4 : BOOL
             VAR_INPUT
                 ipAddress : STRING;  
@@ -135,6 +154,10 @@ NAMESPACE Simatic.Ax.Conversion
             _ConvertToIpV4 := isValid;
         END_METHOD
         
+        /// Extracts the port number from the IP address
+        /// @param ipAddress The IP address containing the port
+        /// @param port The extracted port number
+        /// @return TRUE if the port extraction is successful, FALSE otherwise
         METHOD PRIVATE _GetPort : BOOL
             VAR_INPUT
                 ipAddress : STRING;
@@ -167,6 +190,9 @@ NAMESPACE Simatic.Ax.Conversion
             END_IF;
         END_METHOD
 
+        /// Checks if the IP address uses HTTP protocol
+        /// @param ipAddress The IP address to check
+        /// @return TRUE if the IP address uses HTTP, FALSE otherwise
         METHOD PRIVATE _IsHttp : BOOL
             VAR_INPUT
                 ipAddress : STRING;
@@ -174,6 +200,9 @@ NAMESPACE Simatic.Ax.Conversion
             _IsHttp := PositionOf(ipAddress, 'http://') = 1;
         END_METHOD
         
+        /// Checks if the IP address uses HTTPS protocol
+        /// @param ipAddress The IP address to check
+        /// @return TRUE if the IP address uses HTTPS, FALSE otherwise
         METHOD PRIVATE _IsHttps : BOOL
             VAR_INPUT
                 ipAddress : STRING;
