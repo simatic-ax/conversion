@@ -16,11 +16,8 @@ NAMESPACE Simatic.Ax.Conversion
             VAR_INPUT
                 ipAddress : STRING;
             END_VAR
-            VAR
-                isValid : BOOL;
-            END_VAR
             _isValid := THIS._ToIpV4(ipAddress := ipAddress, ipV4 => _ipv4);
-            IF (isValid) THEN
+            IF (_isValid) THEN
                 this._GetPort(ipAddress := ipAddress, Port => _port);
             END_IF;
             SetIpAddress := _isValid;
@@ -37,8 +34,8 @@ NAMESPACE Simatic.Ax.Conversion
                 ipV4 : IP_V4;  
             END_VAR
             
-            cleanedIpAddress := CleanIpAddress(ipAddress);
-            _ToIpV4 := ConvertToIpV4(cleanedIpAddress, ipV4);
+            cleanedIpAddress := this._CleanIpAddress(ipAddress);
+            _ToIpV4 := THIS._ConvertToIpV4(cleanedIpAddress, ipV4);
         END_METHOD  
         
         METHOD PRIVATE _CleanIpAddress : STRING
@@ -171,29 +168,7 @@ NAMESPACE Simatic.Ax.Conversion
                 IsHttps := FALSE;
             END_IF;
         END_METHOD
-        
-        METHOD GetPort : INT
-            VAR_INPUT
-                ipAddress : STRING;
-            END_VAR
-            VAR
-                portPos : INT;
-                portStr : STRING;
-                port : INT;
-            END_VAR
-            
-            portPos := PositionOf(ipAddress, ':');
-            IF portPos > 0 THEN
-                portStr := Substring(ipAddress, portPos + 1, LengthOf(ipAddress) - portPos);
-                IF Strings.ToInt(portStr, port) THEN
-                    GetPort := port;
-                ELSE
-                    GetPort := -1;  // Invalid port
-                END_IF;
-            ELSE
-                GetPort := -1;  // No port found
-            END_IF;
-        END_METHOD
+    
 
         METHOD PUBLIC GetIpAddress : IP_V4
             GetIpAddress := _ipv4;
@@ -208,7 +183,7 @@ NAMESPACE Simatic.Ax.Conversion
             ;
         END_METHOD
 
-        METHOD GetPort : UINT
+        METHOD PUBLIC GetPort : UINT
             GetPort := _port;
             ;
         END_METHOD

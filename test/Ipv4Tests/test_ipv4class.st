@@ -7,12 +7,13 @@ NAMESPACE Ipv4Tests
     CLASS Test_IpHandlingClass
         VAR
             IpHandling, IpHandling_Stateless : IpHandling;
-            
         END_VAR
+
         {TestSetup}
         METHOD PUBLIC TestSetup
-            IpHandling_Stateless := IpHandling;
+            IpHandling := IpHandling_Stateless;
         END_METHOD
+
         {Test}
         METHOD PUBLIC TestIpAddressParsing
             VAR
@@ -113,6 +114,80 @@ NAMESPACE Ipv4Tests
             result := IpHandling.SetIpAddress('192.abc.0.1');
             IsFalse(result);
             Equal(actual := IpHandling.GetIpAddress(), expected := ipv4_expected);
+        END_METHOD
+
+        {Test}
+        METHOD PUBLIC TestHttpIpAddress
+            VAR
+                result : BOOL;
+                ipv4_expected : IP_V4 := [BYTE#192, BYTE#168, BYTE#0, BYTE#1];
+            END_VAR
+            result := IpHandling.SetIpAddress('http://192.168.0.1');
+            IsTrue(result);
+            Equal(actual := IpHandling.GetIpAddress(), expected := ipv4_expected);
+        END_METHOD
+
+        {Test}
+        METHOD PUBLIC TestHttpsIpAddress
+            VAR
+                result : BOOL;
+                ipv4_expected : IP_V4 := [BYTE#192, BYTE#168, BYTE#0, BYTE#1];
+            END_VAR
+            result := IpHandling.SetIpAddress('https://192.168.0.1');
+            IsTrue(result);
+            Equal(actual := IpHandling.GetIpAddress(), expected := ipv4_expected);
+        END_METHOD
+
+        {Test}
+        METHOD PUBLIC TestHttpIpAddressWithPort
+            VAR
+                result : BOOL;
+                ipv4_expected : IP_V4 := [BYTE#192, BYTE#168, BYTE#0, BYTE#1];
+                expectedPort : UINT := UINT#8080;
+            END_VAR
+            result := IpHandling.SetIpAddress('http://192.168.0.1:8080');
+            IsTrue(result);
+            Equal(actual := IpHandling.GetIpAddress(), expected := ipv4_expected);
+            Equal(actual := IpHandling.GetPort(), expected := expectedPort);
+        END_METHOD
+
+        {Test}
+        METHOD PUBLIC TestHttpsIpAddressWithPort
+            VAR
+                result : BOOL;
+                ipv4_expected : IP_V4 := [BYTE#192, BYTE#168, BYTE#0, BYTE#1];
+                expectedPort : UINT := UINT#443;
+            END_VAR
+            result := IpHandling.SetIpAddress('https://192.168.0.1:443');
+            IsTrue(result);
+            Equal(actual := IpHandling.GetIpAddress(), expected := ipv4_expected);
+            Equal(actual := IpHandling.GetPort(), expected := expectedPort);
+        END_METHOD
+
+        {Test}
+        METHOD PUBLIC TestHttpIpAddressDefaultPort
+            VAR
+                result : BOOL;
+                ipv4_expected : IP_V4 := [BYTE#192, BYTE#168, BYTE#0, BYTE#1];
+                expectedPort : UINT := UINT#80;
+            END_VAR
+            result := IpHandling.SetIpAddress('http://192.168.0.1');
+            IsTrue(result);
+            Equal(actual := IpHandling.GetIpAddress(), expected := ipv4_expected);
+            Equal(actual := IpHandling.GetPort(), expected := expectedPort);
+        END_METHOD
+
+        {Test}
+        METHOD PUBLIC TestHttpsIpAddressDefaultPort
+            VAR
+                result : BOOL;
+                ipv4_expected : IP_V4 := [BYTE#192, BYTE#168, BYTE#0, BYTE#1];
+                expectedPort : UINT := UINT#443;
+            END_VAR
+            result := IpHandling.SetIpAddress('https://192.168.0.1');
+            IsTrue(result);
+            Equal(actual := IpHandling.GetIpAddress(), expected := ipv4_expected);
+            Equal(actual := IpHandling.GetPort(), expected := expectedPort);
         END_METHOD
 
         {Test(ipAddress := '192.168.1.1', expectedSuccess := TRUE, expectedByte1 := BYTE#192, expectedByte2 := BYTE#168, expectedByte3 := BYTE#1, expectedByte4 := BYTE#1)}
