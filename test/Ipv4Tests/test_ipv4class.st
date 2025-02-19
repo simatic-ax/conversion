@@ -169,7 +169,7 @@ NAMESPACE Ipv4Tests
             VAR
                 result : BOOL;
                 ipv4_expected : IP_V4 := [BYTE#192, BYTE#168, BYTE#0, BYTE#1];
-                expectedPort : UINT := UINT#80;
+                expectedPort : UINT := UINT#0;
             END_VAR
             result := IpHandling.SetIpAddress('http://192.168.0.1');
             IsTrue(result);
@@ -182,7 +182,7 @@ NAMESPACE Ipv4Tests
             VAR
                 result : BOOL;
                 ipv4_expected : IP_V4 := [BYTE#192, BYTE#168, BYTE#0, BYTE#1];
-                expectedPort : UINT := UINT#443;
+                expectedPort : UINT := UINT#0;
             END_VAR
             result := IpHandling.SetIpAddress('https://192.168.0.1');
             IsTrue(result);

@@ -19,6 +19,7 @@ NAMESPACE Simatic.Ax.Conversion
             _isValid := THIS._ToIpV4(ipAddress := ipAddress, ipV4 => _ipv4);
             IF (_isValid) THEN
                 this._GetPort(ipAddress := ipAddress, Port => _port);
+                _isSecure := this.IsHttps();
             END_IF;
             SetIpAddress := _isValid;
         END_METHOD
@@ -133,17 +134,20 @@ NAMESPACE Simatic.Ax.Conversion
             
             portPos := PositionOf(ipAddress, ':');
             IF portPos > 0 THEN
-            portStr := Substring(ipAddress, portPos + 1, LengthOf(ipAddress) - portPos);
-            IF Strings.ToInt(portStr, portInt) AND portInt >= UINT#0 AND portInt <= UINT#65535 THEN
-                port := portInt;
-                _GetPort := TRUE;
+                portStr := Substring(ipAddress, portPos + 1, LengthOf(ipAddress) - portPos);
+                IF PositionOf(portStr, ':') > 0 THEN
+                    portStr := Substring(portStr, PositionOf(portStr, ':') + 1, LengthOf(portStr) - PositionOf(portStr, ':'));
+                END_IF;
+                IF Strings.ToInt(portStr, portInt) AND portInt >= UINT#0 AND portInt <= UINT#65535 THEN
+                    port := portInt;
+                    _GetPort := TRUE;
+                ELSE
+                    port := UINT#0;  // Invalid port
+                    _GetPort := FALSE;
+                END_IF;
             ELSE
-                port := UINT#0;  // Invalid port
+                port := UINT#0;  // No port found
                 _GetPort := FALSE;
-            END_IF;
-            ELSE
-            port := UINT#0;  // No port found
-            _GetPort := FALSE;
             END_IF;
         END_METHOD
 
@@ -189,7 +193,7 @@ NAMESPACE Simatic.Ax.Conversion
         END_METHOD
 
         METHOD IsSecure : BOOL
-            // Implementation to check if the connection is secure (https)
+            IsSecure := _isSecure;
             ;
         END_METHOD
     END_CLASS
