@@ -14,16 +14,65 @@ NAMESPACE RegexTests
         END_METHOD
 
         {Test}
-        METHOD PUBLIC TestMatchIpAddress
+        METHOD PUBLIC TestMatchIpAddress_1
             VAR
-                pattern : STRING := '^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$$';
+                pattern : STRING := '\d{1,3}.';
                 input : STRING := '192.168.0.1';
+                expected_match : STRING := '192.';
                 result : BOOL;
             END_VAR
             Regex.SetInput(input);
             Regex.SetPattern(pattern);
             result := Regex.Match();
             IsTrue(result);
+            Equal(actual := Regex.GetMatch(), expected := expected_match);
+        END_METHOD
+
+        {Test}
+        METHOD PUBLIC TestMatchIpAddress
+            VAR
+                pattern : STRING := '^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$$';
+                input : STRING := '192.168.0.1';
+                expected_match : STRING := '192.168.0.1';
+                result : BOOL;
+            END_VAR
+            Regex.SetInput(input);
+            Regex.SetPattern(pattern);
+            result := Regex.Match();
+            IsTrue(result);
+            Equal(actual := Regex.GetMatch(), expected := expected_match);
+        END_METHOD
+
+        {Test}
+        METHOD PUBLIC TestMatchIpAddressWith4Digits
+            VAR
+                pattern : STRING := '^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$$';
+                input : STRING := '1922.168.0.1';
+                expected_match : STRING := '';
+                result : BOOL;
+            END_VAR
+            Regex.SetInput(input);
+            Regex.SetPattern(pattern);
+            result := Regex.Match();
+            IsFalse(result);
+            Equal(actual := Regex.GetMatch(), expected := expected_match);
+
+        END_METHOD
+
+        {Test}
+        METHOD PUBLIC TestMatchIpAddressWithHttp
+            VAR
+                pattern : STRING := '^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$$';
+                input : STRING := 'http://192.168.0.1';
+                expected_match : STRING := '192.168.0.1';
+                result : BOOL;
+            END_VAR
+            Regex.SetInput(input);
+            Regex.SetPattern(pattern);
+            result := Regex.Match();
+            IsTrue(result);
+            Equal(actual := Regex.GetMatch(), expected := expected_match);
+
         END_METHOD
 
         {Test}
