@@ -42,8 +42,8 @@ END_NAMESPACE
 
 |Mode|Example|Result|
 |-|-|-|
-|NONE       | Integer.ToString(value := 123) | '123'
-|FORCE_SIGN | Integer.ToString(value := 123, mode := ConversionMode#FORCE_SIGN) | '+123'
+|NONE       | Integer.ToString(value := 123) | '123' |
+|FORCE_SIGN | Integer.ToString(value := 123, mode := ConversionMode#FORCE_SIGN) | '+123' |
 
 ## Functions
 
@@ -123,7 +123,7 @@ Strings.ToArray.OfCharCount(str : STRING, arr : ARRAY[*] OF CHAR) : DINT;
 
 |||
 |-|-|
-| ToArray.OfCharCount() : DINT | Returns the number of copied characters
+| ToArray.OfCharCount() : DINT | Returns the number of copied characters |
 |str : STRING| Source string |
 |arr : ARRAY[*] OF CHAR| Destination array |
 
@@ -147,7 +147,7 @@ Convert a String "[123, 456, 789]" to an ARRAY[*] OF LINT and returns the number
 
 |||
 |-|-|
-| ToArray() : STRING | Returns the string created of the array. Arrays > 254 elements will be cut off
+| ToArray() : STRING | Returns the string created of the array. Arrays > 254 elements will be cut off |
 |arr : ARRAY[*] OF CHAR| Source array |
 |startIdx : INT | Start index|
 |endIdx : INT | End index|
