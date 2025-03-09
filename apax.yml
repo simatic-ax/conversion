@@ -24,7 +24,7 @@ installStrategy: strict
 apaxVersion: 3.2.1
 # Dependencies
 devDependencies:
-  "@ax/sdk": ^2411.0.0
+  "@ax/sdk": 2411.1.0
   "@simatic-ax/snippetscollection": ^1.0.0
 dependencies:
   "@ax/system-strings": ^8.0.7
@@ -38,3 +38,5 @@ files:
   - 'snippets'
   - 'doc'
   - 'src' # ship library with source
+catalogs:
+  "@ax/simatic-ax": ^2411.0.0

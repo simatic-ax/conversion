@@ -16,7 +16,7 @@ NAMESPACE RegexTests
         {Test}
         METHOD PUBLIC TestMatchIpAddress_1
             VAR
-                pattern : STRING := '\d{1,3}.';
+                pattern : STRING := '\d{1,3}\.';
                 input : STRING := '192.168.0.1';
                 expected_match : STRING := '192.';
                 result : BOOL;
@@ -62,7 +62,7 @@ NAMESPACE RegexTests
         {Test}
         METHOD PUBLIC TestMatchIpAddressWithHttp
             VAR
-                pattern : STRING := '^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$$';
+                pattern : STRING := '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$$';
                 input : STRING := 'http://192.168.0.1';
                 expected_match : STRING := '192.168.0.1';
                 result : BOOL;

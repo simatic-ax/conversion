@@ -53,13 +53,13 @@ NAMESPACE Simatic.Ax.RegularExpression
                 charInput := strInput[i];
                 charPattern := strPattern[j];
                 CASE charPattern OF
-                    '.':
-                        IF startPos = 0 THEN
-                            startPos := i;
-                        END_IF;
-                        tempMatch := CONCAT(tempMatch, charInput);
-                        i := i + 1;
-                        j := j + 1;
+                    // '.':
+                    //     IF startPos = 0 THEN
+                    //         startPos := i;
+                    //     END_IF;
+                    //     tempMatch := CONCAT(tempMatch, charInput);
+                    //     i := i + 1;
+                    //     j := j + 1;
                     'A'..'Z', 'a'..'z', '0'..'9':
                         IF charInput = charPattern THEN
                             IF startPos = 0 THEN
@@ -69,6 +69,7 @@ NAMESPACE Simatic.Ax.RegularExpression
                             i := i + 1;
                             j := j + 1;
                         ELSE
+                            tempMatch := '';
                             matchFound := FALSE;
                             EXIT;
                         END_IF;
@@ -113,11 +114,13 @@ NAMESPACE Simatic.Ax.RegularExpression
                                             END_IF;
                                         END_WHILE;
                                         IF repeatCount < repeatMin THEN
+                                            tempMatch := '';
                                             matchFound := FALSE;
                                             EXIT;
                                         END_IF;
                                     END_IF;
                                 ELSE
+                                    tempMatch := '';
                                     matchFound := FALSE;
                                     EXIT;
                                 END_IF;
@@ -161,23 +164,39 @@ NAMESPACE Simatic.Ax.RegularExpression
                                 END_WHILE;
                                 IF repeatCount < repeatMin THEN
                                     matchFound := FALSE;
+                                    tempMatch := '';
                                     EXIT;
                                 END_IF;
+                            '.':
+                                // IF startPos = 0 THEN
+                                //     startPos := i;
+                                // END_IF;
+                                if (charInput <> '.') THEN
+                                    matchFound := FALSE;
+                                    tempMatch := '';
+                                EXIT;
+                                end_if;
+                                tempMatch := CONCAT(tempMatch, charInput);
+                                i := i + 1;
+                                j := j + 1;
                         END_CASE;
                     '^':
                         IF i <> 1 THEN
                             matchFound := FALSE;
+                            tempMatch := '';
                             EXIT;
                         END_IF;
                         j := j + 1;
                     '$$':
                         IF i <> LengthOf(strInput) THEN
                             matchFound := FALSE;
+                            tempMatch := '';
                             EXIT;
                         END_IF;
                         j := j + 1;
                 ELSE
                     matchFound := FALSE;
+                    tempMatch := '';
                     EXIT;
                 END_CASE;
             END_WHILE;
@@ -198,82 +217,82 @@ NAMESPACE Simatic.Ax.RegularExpression
             GetMatch := strMatch;
         END_METHOD
 
-        METHOD PUBLIC IsMatch2 : BOOL
-            VAR_INPUT
-                inputStr : STRING;
-                pattern : STRING;
-            END_VAR
-            VAR
-                i, j, repeatCount : INT;
-                charInput, charPattern : CHAR;
-                repeatMin, repeatMax : INT;
-            END_VAR
-            IsMatch2 := FALSE;
-            i := 1;
-            j := 1;
-            WHILE i <= LengthOf(inputStr) AND j <= LengthOf(pattern) DO
-                charInput := inputStr[i];
-                charPattern := pattern[j];
-                CASE charPattern OF
-                    '\':
-                        j := j + 1;
-                        charPattern := pattern[j];
-                        CASE charPattern OF
-                            'd':
-                                IF charInput >= '0' AND charInput <= '9' THEN
-                                    i := i + 1;
-                                    j := j + 1;
-                                    IF pattern[j] = '{' THEN
-                                        j := j + 1;
-                                        repeatMin := 0;
-                                        repeatMax := 0;
-                                        WHILE pattern[j] <> ',' AND pattern[j] <> '}' DO
-                                            repeatMin := repeatMin * 10 + (TO_INT(TO_BYTE(pattern[j])) - 48);
-                                            j := j + 1;
-                                        END_WHILE;
-                                        IF pattern[j] = ',' THEN
-                                            j := j + 1;
-                                            WHILE pattern[j] <> '}' DO
-                                                repeatMax := repeatMax * 10 + (TO_INT(TO_BYTE(pattern[j])) - 48);
-                                                j := j + 1;
-                                            END_WHILE;
-                                        ELSE
-                                            repeatMax := repeatMin;
-                                        END_IF;
-                                        j := j + 1;
-                                        repeatCount := 1;
-                                        WHILE repeatCount < repeatMax AND i <= LengthOf(inputStr) DO
-                                            IF inputStr[i] >= '0' AND inputStr[i] <= '9' THEN
-                                                i := i + 1;
-                                                repeatCount := repeatCount + 1;
-                                            ELSE
-                                                EXIT;
-                                            END_IF;
-                                        END_WHILE;
-                                        IF repeatCount < repeatMin THEN
-                                            RETURN;
-                                        END_IF;
-                                    END_IF;
-                                ELSE
-                                    RETURN;
-                                END_IF;
-                        END_CASE;
-                    '.':
-                        i := i + 1;
-                        j := j + 1;
-                    ELSE
-                        IF charInput = charPattern THEN
-                            i := i + 1;
-                            j := j + 1;
-                        ELSE
-                            RETURN;
-                        END_IF;
-                END_CASE;
-            END_WHILE;
-            IF i > LengthOf(inputStr) AND j > LengthOf(pattern) THEN
-                IsMatch2 := TRUE;
-            END_IF;
-        END_METHOD
+        // METHOD PUBLIC IsMatch2 : BOOL
+        //     VAR_INPUT
+        //         inputStr : STRING;
+        //         pattern : STRING;
+        //     END_VAR
+        //     VAR
+        //         i, j, repeatCount : INT;
+        //         charInput, charPattern : CHAR;
+        //         repeatMin, repeatMax : INT;
+        //     END_VAR
+        //     IsMatch2 := FALSE;
+        //     i := 1;
+        //     j := 1;
+        //     WHILE i <= LengthOf(inputStr) AND j <= LengthOf(pattern) DO
+        //         charInput := inputStr[i];
+        //         charPattern := pattern[j];
+        //         CASE charPattern OF
+        //             '\':
+        //                 j := j + 1;
+        //                 charPattern := pattern[j];
+        //                 CASE charPattern OF
+        //                     'd':
+        //                         IF charInput >= '0' AND charInput <= '9' THEN
+        //                             i := i + 1;
+        //                             j := j + 1;
+        //                             IF pattern[j] = '{' THEN
+        //                                 j := j + 1;
+        //                                 repeatMin := 0;
+        //                                 repeatMax := 0;
+        //                                 WHILE pattern[j] <> ',' AND pattern[j] <> '}' DO
+        //                                     repeatMin := repeatMin * 10 + (TO_INT(TO_BYTE(pattern[j])) - 48);
+        //                                     j := j + 1;
+        //                                 END_WHILE;
+        //                                 IF pattern[j] = ',' THEN
+        //                                     j := j + 1;
+        //                                     WHILE pattern[j] <> '}' DO
+        //                                         repeatMax := repeatMax * 10 + (TO_INT(TO_BYTE(pattern[j])) - 48);
+        //                                         j := j + 1;
+        //                                     END_WHILE;
+        //                                 ELSE
+        //                                     repeatMax := repeatMin;
+        //                                 END_IF;
+        //                                 j := j + 1;
+        //                                 repeatCount := 1;
+        //                                 WHILE repeatCount < repeatMax AND i <= LengthOf(inputStr) DO
+        //                                     IF inputStr[i] >= '0' AND inputStr[i] <= '9' THEN
+        //                                         i := i + 1;
+        //                                         repeatCount := repeatCount + 1;
+        //                                     ELSE
+        //                                         EXIT;
+        //                                     END_IF;
+        //                                 END_WHILE;
+        //                                 IF repeatCount < repeatMin THEN
+        //                                     RETURN;
+        //                                 END_IF;
+        //                             END_IF;
+        //                         ELSE
+        //                             RETURN;
+        //                         END_IF;
+        //                 '.':
+        //                     i := i + 1;
+        //                     j := j + 1;
+        //             END_CASE;
+        //             ELSE
+        //                 IF charInput = charPattern THEN
+        //                     i := i + 1;
+        //                     j := j + 1;
+        //                 ELSE
+        //                     RETURN;
+        //                 END_IF;
+        //         END_CASE;
+        //     END_WHILE;
+        //     IF i > LengthOf(inputStr) AND j > LengthOf(pattern) THEN
+        //         IsMatch2 := TRUE;
+        //     END_IF;
+        // END_METHOD
     END_CLASS
 
    
