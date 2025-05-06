@@ -35,6 +35,6 @@ files:
   - 'changelog.md'
   - 'snippets'
   - 'doc'
-  - 'src' # ship library with source
+  - 'bin' # ship library with binaries
 catalogs:
   "@ax/simatic-ax": ^2504.0.0
