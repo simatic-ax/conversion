@@ -21,14 +21,13 @@ targets:
   - 'llvm'
 # Install Setting
 installStrategy: strict
-apaxVersion: 3.2.1
 # Dependencies
 devDependencies:
-  "@ax/sdk": ^2411.0.0
+  "@ax/sdk": ^2504.0.0
   "@simatic-ax/snippetscollection": ^1.0.0
 dependencies:
-  "@ax/system-strings": ^8.0.7
-  "@ax/system-math": ^8.0.7
+  "@ax/system-strings": ^10.0.24
+  "@ax/system-math": ^10.0.24
 # Files, which will be shipped with the library
 files:
   - 'README.md'
@@ -37,3 +36,5 @@ files:
   - 'snippets'
   - 'doc'
   - 'src' # ship library with source
+catalogs:
+  "@ax/simatic-ax": ^2504.0.0
