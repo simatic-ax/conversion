@@ -11,19 +11,19 @@
       "@ax/system-math": "^10.0.24"
     },
     "devDependencies": {
-      "@ax/sdk": "^2504.0.0-rc.3",
+      "@ax/sdk": "^2504.0.0",
       "@simatic-ax/snippetscollection": "^1.0.0"
     },
     "catalogs": {
-      "@ax/simatic-ax": "^2504.0.0-rc.3"
+      "@ax/simatic-ax": "^2504.0.0"
     }
   },
   "packages": {
     "@ax/sdk": {
       "name": "@ax/sdk",
-      "version": "2504.0.0-rc.3",
-      "integrity": "sha512-UMjqKOnMxbkwIiNedR1XZJ2zcDMVpt2N08vEh6bEU5IzIHEx/IIKMUXBbRNexXhhE6Ps2iSH8qxs22KJK5Hpww==",
-      "resolved": "https://registry.simatic-ax.siemens.io/@ax/sdk/-/sdk-2504.0.0-rc.3.tgz",
+      "version": "2504.0.0",
+      "integrity": "sha512-N/EKc3cmIEtfuHaz1q7sz4Rg3VA3xnS+hBXvtrT1kz9Aslm0In+v3lehzJoKtjhM5/RwX3yqjuIYtPKOY0nNqQ==",
+      "resolved": "https://registry.simatic-ax.siemens.io/@ax/sdk/-/sdk-2504.0.0.tgz",
       "dependencies": {
         "@ax/apax-build": "2.0.20",
         "@ax/axunitst": "8.0.33",
@@ -693,9 +693,9 @@
   "catalogs": {
     "@ax/simatic-ax": {
       "name": "@ax/simatic-ax",
-      "version": "2504.0.0-rc.3",
-      "integrity": "sha512-0dHC53nA9e+sRU/Y22rM1pFK8JblfT2bN+53XB+dvGgJyqOl3mTSgpcOcDFq+FMo9+r2c6NKS9UOM2/nMsO9Mw==",
-      "resolved": "https://registry.simatic-ax.siemens.io/@ax/simatic-ax/-/simatic-ax-2504.0.0-rc.3.tgz",
+      "version": "2504.0.0",
+      "integrity": "sha512-eN/1a893Pm8y0RL9/fdeCi8wFrpUrGQ8AiEpD6C/nBbUu9BT2LthySN2x9Fp8fLirhZV+SnHU3GVvQiLgIutBw==",
+      "resolved": "https://registry.simatic-ax.siemens.io/@ax/simatic-ax/-/simatic-ax-2504.0.0.tgz",
       "dependencies": {},
       "catalogDependencies": {
         "@ax/stc": "10.0.85",
@@ -764,7 +764,10 @@
         "@ax/st-resources.stc-plugin": "3.0.23",
         "@ax/xlad-transpile-cli": "1.2.0",
         "@ax/st-lang-contrib-xlad": "1.2.0",
-        "@ax/sdk": "2504.0.0-rc.3"
+        "@ax/simatic-1500-pointtopoint": "3.0.4",
+        "@ax/simatic-1500-modbusrtu": "3.0.5",
+        "@ax/simatic-1500-technology-objects": "3.0.8",
+        "@ax/sdk": "2504.0.0"
       }
     }
   }
