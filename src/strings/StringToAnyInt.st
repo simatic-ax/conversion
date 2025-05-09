@@ -1,6 +1,15 @@
 USING System.Strings;
 
 NAMESPACE Simatic.Ax.Conversion
+
+    /// Converts a string to a signed 64-bit integer (LINT).
+    ///
+    /// This function parses a string and converts it to a signed 64-bit integer. It handles
+    /// optional '+' or '-' signs and checks for overflow. If the string is invalid, the
+    /// function returns FALSE and sets the output to 0.
+    ///
+    /// @param str The input string to convert.
+    /// @return TRUE if the conversion is successful, FALSE otherwise.
     FUNCTION StringToAnyInt : BOOL
         VAR_INPUT
             str : STRING;
@@ -80,6 +89,14 @@ NAMESPACE Simatic.Ax.Conversion
 
     END_FUNCTION
 
+    /// Converts a string to an unsigned 64-bit integer (ULINT).
+    ///
+    /// This function parses a string and converts it to an unsigned 64-bit integer. It handles
+    /// optional '+' signs and checks for overflow. If the string is invalid, the function
+    /// returns FALSE and sets the output to 0.
+    ///
+    /// @param str The input string to convert.
+    /// @return TRUE if the conversion is successful, FALSE otherwise.
     FUNCTION INTERNAL StringToULint: BOOL
         VAR_INPUT
             str : STRING;

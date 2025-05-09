@@ -2,16 +2,19 @@ USING System.Strings;
 
 NAMESPACE Simatic.Ax.Conversion
 
-    // returns the hex value as byte of a hex character
-    // Example 'a' --> BYTE#16#a
-    // Valid characters: [A-Fa-f0-9]
-    // Return vlaue: character is valid
+    /// Converts a hexadecimal character to its byte value.
+    ///
+    /// This function takes a single hexadecimal character (0-9, A-F, a-f) and converts it
+    /// to its corresponding byte value. If the character is invalid, the function returns FALSE.
+    ///
+    /// @param c The input hexadecimal character.
+    /// @return TRUE if the conversion is successful, FALSE otherwise.
     FUNCTION INTERNAL GetHexValueOfChar : BOOL
         VAR_INPUT
             c : CHAR;
         END_VAR
         VAR_OUTPUT
-            result : BYTE;
+            result : BYTE; // The byte value of the hexadecimal character
         END_VAR
         GetHexValueOfChar := TRUE;
         CASE c OF

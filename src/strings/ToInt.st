@@ -1,6 +1,14 @@
 USING System.Strings;
 
 NAMESPACE Simatic.Ax.Conversion.Strings
+
+    /// Converts a string to a signed 8-bit integer (SINT).
+    ///
+    /// This function parses a string and converts it to a signed 8-bit integer. If the value
+    /// is out of range or invalid, the function returns FALSE and sets the output to 0.
+    ///
+    /// @param str The input string to convert.
+    /// @return TRUE if the conversion is successful, FALSE otherwise.
     FUNCTION ToInt : BOOL
         VAR_INPUT
             str : STRING;
@@ -26,6 +34,13 @@ NAMESPACE Simatic.Ax.Conversion.Strings
         END_IF;
     END_FUNCTION
 
+    /// Converts a string to a signed 16-bit integer (INT).
+    ///
+    /// This function parses a string and converts it to a signed 16-bit integer. If the value
+    /// is out of range or invalid, the function returns FALSE and sets the output to 0.
+    ///
+    /// @param str The input string to convert.
+    /// @return TRUE if the conversion is successful, FALSE otherwise.
     FUNCTION ToInt : BOOL
         VAR_INPUT
             str : STRING;
@@ -51,6 +66,13 @@ NAMESPACE Simatic.Ax.Conversion.Strings
         END_IF;
     END_FUNCTION
 
+    /// Converts a string to a signed 32-bit integer (DINT).
+    ///
+    /// This function parses a string and converts it to a signed 32-bit integer. If the value
+    /// is out of range or invalid, the function returns FALSE and sets the output to 0.
+    ///
+    /// @param str The input string to convert.
+    /// @return TRUE if the conversion is successful, FALSE otherwise.
     FUNCTION ToInt : BOOL
         VAR_INPUT
             str : STRING;
@@ -76,6 +98,13 @@ NAMESPACE Simatic.Ax.Conversion.Strings
         END_IF;
     END_FUNCTION
 
+    /// Converts a string to a signed 64-bit integer (LINT).
+    ///
+    /// This function parses a string and converts it to a signed 64-bit integer. If the value
+    /// is out of range or invalid, the function returns FALSE and sets the output to 0.
+    ///
+    /// @param str The input string to convert.
+    /// @return TRUE if the conversion is successful, FALSE otherwise.
     FUNCTION ToInt : BOOL
         VAR_INPUT
             str : STRING;
@@ -101,6 +130,13 @@ NAMESPACE Simatic.Ax.Conversion.Strings
         END_IF;
     END_FUNCTION
 
+    /// Converts a string to an unsigned 8-bit integer (USINT).
+    ///
+    /// This function parses a string and converts it to an unsigned 8-bit integer. If the value
+    /// is out of range or invalid, the function returns FALSE and sets the output to 0.
+    ///
+    /// @param str The input string to convert.
+    /// @return TRUE if the conversion is successful, FALSE otherwise.
     FUNCTION ToInt : BOOL
         VAR_INPUT
             str : STRING;
@@ -126,6 +162,13 @@ NAMESPACE Simatic.Ax.Conversion.Strings
         END_IF;
     END_FUNCTION
 
+    /// Converts a string to an unsigned 16-bit integer (UINT).
+    ///
+    /// This function parses a string and converts it to an unsigned 16-bit integer. If the value
+    /// is out of range or invalid, the function returns FALSE and sets the output to 0.
+    ///
+    /// @param str The input string to convert.
+    /// @return TRUE if the conversion is successful, FALSE otherwise.
     FUNCTION ToInt : BOOL
         VAR_INPUT
             str : STRING;
@@ -151,6 +194,13 @@ NAMESPACE Simatic.Ax.Conversion.Strings
         END_IF;
     END_FUNCTION
 
+    /// Converts a string to an unsigned 32-bit integer (UDINT).
+    ///
+    /// This function parses a string and converts it to an unsigned 32-bit integer. If the value
+    /// is out of range or invalid, the function returns FALSE and sets the output to 0.
+    ///
+    /// @param str The input string to convert.
+    /// @return TRUE if the conversion is successful, FALSE otherwise.
     FUNCTION ToInt : BOOL
         VAR_INPUT
             str : STRING;
@@ -176,6 +226,13 @@ NAMESPACE Simatic.Ax.Conversion.Strings
         END_IF;
     END_FUNCTION
 
+    /// Converts a string to an unsigned 64-bit integer (ULINT).
+    ///
+    /// This function parses a string and converts it to an unsigned 64-bit integer. If the value
+    /// is out of range or invalid, the function returns FALSE and sets the output to 0.
+    ///
+    /// @param str The input string to convert.
+    /// @return TRUE if the conversion is successful, FALSE otherwise.
     FUNCTION ToInt : BOOL
         VAR_INPUT
             str : STRING;

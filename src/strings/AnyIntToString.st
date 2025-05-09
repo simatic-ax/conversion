@@ -2,6 +2,16 @@ USING System.Strings;
 USING System.Math;
 
 NAMESPACE Simatic.Ax.Conversion
+
+    /// Converts a signed 64-bit integer (LINT) to its string representation.
+    ///
+    /// This function converts a signed 64-bit integer to a string, optionally adding a sign
+    /// based on the specified conversion mode. It handles negative values and ensures the
+    /// correct number of digits are included in the output.
+    ///
+    /// @param value The signed 64-bit integer to convert.
+    /// @param mode The conversion mode (e.g., force sign).
+    /// @return A string representation of the input integer.
     FUNCTION INTERNAL AnyIntToString : STRING
         VAR_INPUT
             value : LINT;
@@ -42,6 +52,15 @@ NAMESPACE Simatic.Ax.Conversion
         END_FOR;
     END_FUNCTION
 
+    /// Converts an unsigned 64-bit integer (ULINT) to its string representation.
+    ///
+    /// This function converts an unsigned 64-bit integer to a string, optionally adding a sign
+    /// based on the specified conversion mode. It ensures the correct number of digits are
+    /// included in the output.
+    ///
+    /// @param value The unsigned 64-bit integer to convert.
+    /// @param mode The conversion mode (e.g., force sign).
+    /// @return A string representation of the input integer.
     FUNCTION INTERNAL ULintToString : STRING
         VAR_INPUT
             value : ULINT;
@@ -80,4 +99,5 @@ NAMESPACE Simatic.Ax.Conversion
             ULintToString := Concat(ULintToString, s);
         END_FOR;
     END_FUNCTION
+
 END_NAMESPACE
