@@ -22,6 +22,7 @@
 //   END_FUNCTION
 
 // 2. Unit Test Guidelines:
+// Test-Files shall be stored in the folder `test`.
 // - Use AxUnit for unit testing.
 // - Tests should follow the structure below:
 //   - {TestFixture} to define a test class.
@@ -62,3 +63,36 @@
 //           END_METHOD
 //       END_CLASS
 //   END_NAMESPACE
+
+// 3. Documentation Rules:
+// - All types, functions, and methods must include inline documentation.
+// - Use the following format for documentation:
+//   /// <Brief description>
+//   /// Input: <Parameter descriptions>
+//   /// Returns: <Return value description>
+// - Ensure that all parameters and return values are clearly described.
+
+// 4. File Organization Rules:
+// - Place all source files in the `src` folder.
+// - Place all test files in the `test` folder.
+// - Use descriptive filenames that reflect the functionality of the file.
+
+// 5. Naming Conventions:
+// - Use PascalCase for function and type names (e.g., `ToString`, `SimotionDateTime`).
+
+// 6. Code Format Rules:
+// - Always generate code in IEC61131-3 Structured Text (ST) format.
+
+// 7. Constant Declaration Rules:
+// - Constants, except for `INT`, `BOOL` and `LREAL`, must always include explicit type annotations.
+//   Examples:
+//     - REAL#1.0
+//     - ULINT#1
+//     - SINT#23
+
+// 8. Return Statement Rules:
+// - `RETURN` cannot take a return value.
+// - Return values must always be assigned to the function or method name before using `RETURN`.
+//   Example:
+//     FunctionName := ReturnValue;
+//     RETURN;
