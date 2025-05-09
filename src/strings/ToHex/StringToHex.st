@@ -2,13 +2,18 @@ USING System.Strings;
 
 NAMESPACE Simatic.Ax.Conversion.Strings
 
-    /// This function convert a string containing a hex number into a hex number
-    /// Example 'a231' --> WORD#16#a231
-    /// Return values:
-    /// WORD#16#0000 no error
-    /// WORD#16#0007 invalid character
-    /// WORD#16#8182 Input buffer is too small for data in the N parameter
-    /// WORD#16#8482 Output buffer is too small for data in the N parameter
+    /// Converts a string containing a hexadecimal number to a DWORD value.
+    ///
+    /// This function parses a string containing a hexadecimal number and converts it into
+    /// a DWORD value. It validates the input string and checks for buffer size constraints.
+    ///
+    /// @param str The input string containing the hexadecimal number.
+    /// @param n The number of characters to convert.
+    /// @return A WORD indicating the status of the conversion:
+    ///         - WORD#16#0000: No error.
+    ///         - WORD#16#0007: Invalid character.
+    ///         - WORD#16#8182: Input buffer is too small.
+    ///         - WORD#16#8482: Output buffer is too small.
     FUNCTION ToHex : WORD
         VAR_INPUT
             str : STRING; // Pointer to ASCII character string

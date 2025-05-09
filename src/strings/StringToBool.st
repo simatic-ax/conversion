@@ -3,6 +3,14 @@ USING System.Strings;
 
 NAMESPACE Simatic.Ax.Conversion
 
+    /// Converts a string to a boolean value.
+    ///
+    /// This function checks if the input string represents "TRUE" or "FALSE" (case-insensitive).
+    /// If the string matches "TRUE", the output is TRUE. If it matches "FALSE", the output is FALSE.
+    /// Otherwise, the function returns FALSE and sets the output to FALSE.
+    ///
+    /// @param str The input string to convert.
+    /// @return TRUE if the conversion is successful, FALSE otherwise.
     FUNCTION StringToBool : BOOL
         VAR_INPUT
             str: STRING;

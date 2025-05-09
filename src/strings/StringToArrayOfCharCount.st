@@ -1,6 +1,16 @@
 USING System.Strings;
 
 NAMESPACE Simatic.Ax.Conversion.Strings.ToArray
+
+    /// Converts a string to an array of CHAR values.
+    ///
+    /// This function copies characters from the input string into the provided array of CHAR.
+    /// It returns the number of characters copied. If the array is smaller than the string,
+    /// the output is truncated to fit the array size.
+    ///
+    /// @param str The input string to convert.
+    /// @param arr The output array to store the CHAR values.
+    /// @return The number of characters copied to the array.
     FUNCTION OfCharCount : DINT
         VAR_INPUT
             str : STRING;
@@ -27,4 +37,5 @@ NAMESPACE Simatic.Ax.Conversion.Strings.ToArray
         END_FOR;
         OfCharCount := i;
     END_FUNCTION
+
 END_NAMESPACE
