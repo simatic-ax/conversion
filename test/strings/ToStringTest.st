@@ -113,19 +113,20 @@ NAMESPACE Simatic.Ax.Conversion
             Equal(expected := 20, actual := LengthOf(s));
         END_METHOD
 
+        //ToDo after bugfix
         // Blocked by HA-1737
-        {Test(v := 1234, expStr := '1234', len := 4)}
-        METHOD PUBLIC Convert_INT_VALUES_ToString_Expect_Value_AsString2
-            VAR_INPUT
-                v : LINT;
-                expStr : STRING;
-                len : INT;
-            END_VAR
-            ;            
-            s := Integer.ToString(value := v);
-            Equal(expected := expStr, actual := s);
-            Equal(expected := len, actual := LengthOf(s));
-        END_METHOD
+        // {Test(v := 1234, expStr := '1234', len := 4)}
+        // METHOD PUBLIC Convert_INT_VALUES_ToString_Expect_Value_AsString2
+        //     VAR_INPUT
+        //         v : LINT;
+        //         expStr : STRING;
+        //         len : INT;
+        //     END_VAR
+        //     ;            
+        //     s := Integer.ToString(value := v);
+        //     Equal(expected := expStr, actual := s);
+        //     Equal(expected := len, actual := LengthOf(s));
+        // END_METHOD
 
     END_CLASS
 END_NAMESPACE

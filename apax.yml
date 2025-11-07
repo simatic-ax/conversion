@@ -23,7 +23,7 @@ targets:
 installStrategy: strict
 # Dependencies
 devDependencies:
-  "@ax/sdk": ^2504.0.0
+  "@ax/sdk": ^2510.0.0
   "@simatic-ax/snippetscollection": ^1.0.0
 dependencies:
   "@ax/system-strings": ^10.0.24
@@ -37,4 +37,4 @@ files:
   - 'doc'
   - 'bin' # ship library with binaries
 catalogs:
-  "@ax/simatic-ax": ^2504.0.0
+  "@ax/simatic-ax": ^2510.0.0
