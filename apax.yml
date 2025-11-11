@@ -4,7 +4,7 @@ version: 0.0.0-placeholder
 author: Siemens AG
 type: lib
 # Description will be displayed in the apax extension
-description: Functions for String conversion
+description: "Library providing functions to convert various data types and formats, including integer-to-string, time formats, and array conversions"
 #URL to the repository
 repository:
   type: git
