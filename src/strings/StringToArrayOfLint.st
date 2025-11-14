@@ -3,6 +3,14 @@ USING System.Strings;
 
 NAMESPACE Simatic.Ax.Conversion.Strings.ToArray
 
+    /// Converts a string representation of an array of integers to an array of LINT values.
+    ///
+    /// This function parses a string containing integers (e.g., "[1, 2, 3]") and converts it
+    /// into an array of LINT values. If the string cannot be converted, the function returns FALSE.
+    ///
+    /// @param str The input string to parse.
+    /// @param arr The output array to store the converted LINT values.
+    /// @return TRUE if the conversion is successful, FALSE otherwise.
     FUNCTION INTERNAL OfLint : BOOL
         VAR_INPUT
             str: STRING;
@@ -86,6 +94,14 @@ NAMESPACE Simatic.Ax.Conversion.Strings.ToArray
         END_FOR;
     END_FUNCTION
 
+    /// Extracts the bounds of an array from a string representation.
+    ///
+    /// This function identifies the positions of the opening and closing brackets
+    /// in a string representing an array (e.g., "[1, 2, 3]") and returns their indices.
+    ///
+    /// @param str The input string to analyze.
+    /// @param lower The index of the opening bracket.
+    /// @param upper The index of the closing bracket.
     FUNCTION GetArrayBounds
         VAR_INPUT
             str: STRING;
