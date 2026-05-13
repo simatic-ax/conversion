@@ -1,5 +1,15 @@
 USING System.DateTime;
+
 NAMESPACE Simatic.Ax.Conversion.Times
+
+    /// Converts an LDATE_AND_TIME value to a SimotionDateTime structure.
+    ///
+    /// This function converts a Simatic `LDATE_AND_TIME` value into a `SimotionDateTime` structure.
+    /// The date is represented as the number of days since 01.01.1992, and the time is represented
+    /// as the number of milliseconds since midnight.
+    ///
+    /// @param SimaticTime The input LDATE_AND_TIME value.
+    /// @return A SimotionDateTime structure representing the input date and time.
     FUNCTION ToSimotionDateTime : SimotionDateTime
         VAR_INPUT
             SimaticTime : LDATE_AND_TIME;

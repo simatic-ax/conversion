@@ -2,7 +2,15 @@ USING System;
 USING System.Strings;
 
 NAMESPACE Simatic.Ax.Conversion
-    
+
+    /// Converts a BYTE value to its hexadecimal string representation.
+    ///
+    /// This function takes a BYTE value and converts it into a two-character hexadecimal string.
+    /// It splits the BYTE into two nibbles, converts each nibble to its hexadecimal character,
+    /// and concatenates the results.
+    ///
+    /// @param b The BYTE value to convert.
+    /// @return A two-character string representing the hexadecimal value of the input BYTE.
     FUNCTION PUBLIC ByteToString : STRING
         VAR_INPUT
             b : BYTE;
@@ -18,6 +26,13 @@ NAMESPACE Simatic.Ax.Conversion
 
     END_FUNCTION
 
+    /// Converts a nibble (4 bits) to its hexadecimal character representation.
+    ///
+    /// This function takes a nibble (a value between 0 and 15) and returns the corresponding
+    /// hexadecimal character (0-9, A-F) using a lookup table.
+    ///
+    /// @param nibble The nibble value to convert (0-15).
+    /// @return The hexadecimal character corresponding to the input nibble.
     FUNCTION INTERNAL LookUpHEX : CHAR
         VAR_INPUT
             nibble : BYTE;
