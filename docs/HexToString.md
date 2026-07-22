@@ -10,7 +10,7 @@ Provides hexadecimal string conversion helpers for byte values.
 
 ## Signatures
 
-```st
+```iecst
 FUNCTION PUBLIC ByteToString : STRING
     VAR_INPUT
         b : BYTE;
@@ -33,7 +33,7 @@ END_FUNCTION
 
 ## Examples
 
-```st
+```iecst
 VAR
     hexValue : STRING;
 END_VAR

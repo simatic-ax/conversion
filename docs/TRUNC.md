@@ -10,7 +10,7 @@ Provides overloads of `TRUNC` that truncate `REAL` and `LREAL` values toward zer
 
 ## Signatures
 
-```st
+```iecst
 FUNCTION TRUNC : DINT
     VAR_INPUT
         Value : LREAL;
@@ -44,7 +44,7 @@ END_FUNCTION
 
 ## Examples
 
-```st
+```iecst
 VAR
     resultReal : DINT;
     resultLReal : DINT;

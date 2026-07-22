@@ -10,7 +10,7 @@ Converts the strings `TRUE` and `FALSE` to a boolean value.
 
 ## Signature
 
-```st
+```iecst
 FUNCTION StringToBool : BOOL
     VAR_INPUT
         str : STRING;
@@ -40,7 +40,7 @@ END_FUNCTION
 
 ## Examples
 
-```st
+```iecst
 VAR
     ok : BOOL;
     parsedValue : BOOL;

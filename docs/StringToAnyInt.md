@@ -10,7 +10,7 @@ Provides string-to-integer parsing helpers for signed and unsigned 64-bit intege
 
 ## Signatures
 
-```st
+```iecst
 FUNCTION StringToAnyInt : BOOL
     VAR_INPUT
         str : STRING;
@@ -42,7 +42,7 @@ END_FUNCTION
 
 ## Examples
 
-```st
+```iecst
 VAR
     ok : BOOL;
     parsedValue : LINT;
