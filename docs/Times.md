@@ -23,7 +23,7 @@ Documents the time conversion functions in the `Simatic.Ax.Conversion.Times` nam
 
 ## Examples
 
-```st
+```iecst
 VAR
 	simotionValue : SimotionDateTime;
 	simaticValue : LDATE_AND_TIME;

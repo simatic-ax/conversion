@@ -40,7 +40,7 @@ Provides overloaded `ToString` functions for signed and unsigned integer types.
 
 ## Examples
 
-```st
+```iecst
 VAR
 	sintText : STRING[4];
 	dintText : STRING[11];

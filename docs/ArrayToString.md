@@ -10,7 +10,7 @@ Provides overloads that convert a `CHAR` array, or a selected range within it, t
 
 ## Signatures
 
-```st
+```iecst
 FUNCTION ToString : STRING
     VAR_INPUT
         arr : ARRAY[*] OF CHAR;
@@ -49,7 +49,7 @@ END_FUNCTION
 
 ## Examples
 
-```st
+```iecst
 VAR
     chars : ARRAY[0..4] OF CHAR := ['H', 'e', 'l', 'l', 'o'];
     fullText : STRING;

@@ -10,7 +10,7 @@ Converts a hexadecimal string into a `DWORD` value and returns a status code.
 
 ## Signature
 
-```st
+```iecst
 FUNCTION ToHex : WORD
     VAR_INPUT
         str : STRING;
@@ -50,7 +50,7 @@ END_FUNCTION
 
 ## Examples
 
-```st
+```iecst
 VAR
     status : WORD;
     hexResult : DWORD;
