@@ -11,6 +11,7 @@ NAMESPACE Simatic.Ax.Conversion
     ///
     /// @param b The BYTE value to convert.
     /// @return A two-character string representing the hexadecimal value of the input BYTE.
+    {axcode:docs-v0:@simatic-ax/conversion:HexToString.md}
     FUNCTION PUBLIC ByteToString : STRING
         VAR_INPUT
             b : BYTE;

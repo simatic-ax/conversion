@@ -8,6 +8,7 @@ NAMESPACE Simatic.Ax.Conversion
     ///
     /// @param value The signed 64-bit integer whose digits are to be counted.
     /// @return The number of decimal digits in the input value.
+    {axcode:docs-v0:@simatic-ax/conversion:CountDigits.md}
     FUNCTION CountDigits : INT
         VAR_INPUT
             value : LINT;
@@ -38,6 +39,7 @@ NAMESPACE Simatic.Ax.Conversion
     ///
     /// @param value The unsigned 64-bit integer whose digits are to be counted.
     /// @return The number of decimal digits in the input value.
+    {axcode:docs-v0:@simatic-ax/conversion:CountDigits.md}
     FUNCTION CountDigits : INT
         VAR_INPUT
             value : ULINT;

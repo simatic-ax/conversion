@@ -7,6 +7,7 @@ NAMESPACE Simatic.Ax.Conversion
     ///
     /// @param Value The LREAL value to truncate.
     /// @return The truncated integer value.
+    {axcode:docs-v0:@simatic-ax/conversion:TRUNC.md}
     FUNCTION TRUNC : DINT
         VAR_INPUT
             Value : LREAL;
@@ -30,6 +31,7 @@ NAMESPACE Simatic.Ax.Conversion
     ///
     /// @param Value The REAL value to truncate.
     /// @return The truncated integer value.
+    {axcode:docs-v0:@simatic-ax/conversion:TRUNC.md}
     FUNCTION TRUNC : DINT
         VAR_INPUT
             Value : REAL;

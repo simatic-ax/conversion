@@ -14,6 +14,7 @@ NAMESPACE Simatic.Ax.Conversion.Strings
     ///         - WORD#16#0007: Invalid character.
     ///         - WORD#16#8182: Input buffer is too small.
     ///         - WORD#16#8482: Output buffer is too small.
+    {axcode:docs-v0:@simatic-ax/conversion:StringToHex.md}
     FUNCTION ToHex : WORD
         VAR_INPUT
             str : STRING; // Pointer to ASCII character string

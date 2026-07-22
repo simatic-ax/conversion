@@ -10,6 +10,7 @@ NAMESPACE Simatic.Ax.Conversion.Integer
     /// @param value The signed 8-bit integer to convert.
     /// @param mode The conversion mode (e.g., force sign).
     /// @return A string representation of the input integer.
+    {axcode:docs-v0:@simatic-ax/conversion:IntToString.md}
     FUNCTION ToString : STRING[4]
         VAR_INPUT
             value : SINT;
@@ -28,6 +29,7 @@ NAMESPACE Simatic.Ax.Conversion.Integer
     /// @param value The unsigned 8-bit integer to convert.
     /// @param mode The conversion mode (e.g., force sign).
     /// @return A string representation of the input integer.
+    {axcode:docs-v0:@simatic-ax/conversion:IntToString.md}
     FUNCTION ToString : STRING[4]
         VAR_INPUT
             value : USINT;
@@ -46,6 +48,7 @@ NAMESPACE Simatic.Ax.Conversion.Integer
     /// @param value The signed 16-bit integer to convert.
     /// @param mode The conversion mode (e.g., force sign).
     /// @return A string representation of the input integer.
+    {axcode:docs-v0:@simatic-ax/conversion:IntToString.md}
     FUNCTION ToString : STRING[6]
         VAR_INPUT
             value : INT;
@@ -64,6 +67,7 @@ NAMESPACE Simatic.Ax.Conversion.Integer
     /// @param value The unsigned 16-bit integer to convert.
     /// @param mode The conversion mode (e.g., force sign).
     /// @return A string representation of the input integer.
+    {axcode:docs-v0:@simatic-ax/conversion:IntToString.md}
     FUNCTION ToString : STRING[6]
         VAR_INPUT
             value : UINT;
@@ -83,6 +87,7 @@ NAMESPACE Simatic.Ax.Conversion.Integer
     /// @param value The signed 32-bit integer to convert.
     /// @param mode The conversion mode (e.g., force sign).
     /// @return A string representation of the input integer.
+    {axcode:docs-v0:@simatic-ax/conversion:IntToString.md}
     FUNCTION ToString : STRING[11]
         VAR_INPUT
             value : DINT;
@@ -101,6 +106,7 @@ NAMESPACE Simatic.Ax.Conversion.Integer
     /// @param value The unsigned 32-bit integer to convert.
     /// @param mode The conversion mode (e.g., force sign).
     /// @return A string representation of the input integer.
+    {axcode:docs-v0:@simatic-ax/conversion:IntToString.md}
     FUNCTION ToString : STRING[11]
         VAR_INPUT
             value : UDINT;
@@ -119,6 +125,7 @@ NAMESPACE Simatic.Ax.Conversion.Integer
     /// @param value The signed 64-bit integer to convert.
     /// @param mode The conversion mode (e.g., force sign).
     /// @return A string representation of the input integer.
+    {axcode:docs-v0:@simatic-ax/conversion:IntToString.md}
     FUNCTION ToString : STRING[20]
         VAR_INPUT
             value : LINT;
@@ -137,6 +144,7 @@ NAMESPACE Simatic.Ax.Conversion.Integer
     /// @param value The unsigned 64-bit integer to convert.
     /// @param mode The conversion mode (e.g., force sign).
     /// @return A string representation of the input integer.
+    {axcode:docs-v0:@simatic-ax/conversion:IntToString.md}
     FUNCTION ToString : STRING[21]
         VAR_INPUT
             value : ULINT;
