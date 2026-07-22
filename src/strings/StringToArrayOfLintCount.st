@@ -3,14 +3,15 @@ USING System.Strings;
 
 NAMESPACE Simatic.Ax.Conversion.Strings.ToArray
 
-    /// Convert a string with array of integers like [1, 2, 3] into an array of LINT
-    /// Returns the number of converted elements. 
-    /// Returns 0, if the string can't be converted
-    /// If the destination array is smaller than the number of elements in the string,
-    /// the array will be filled it's maximum size. In this case the function returns 
-    /// the number of the converted numbers (size of array)
-    /// If less elements in the string than the size of the array, the last elements
-    /// will not overwritten.
+    /// Converts a string representation of an array of integers to an array of LINT values.
+    ///
+    /// This function parses a string containing integers (e.g., "[1, 2, 3]") and converts it
+    /// into an array of LINT values. It returns the number of successfully converted elements.
+    /// If the string cannot be converted, the function returns 0.
+    ///
+    /// @param str The input string to parse.
+    /// @param arr The output array to store the converted LINT values.
+    /// @return The number of successfully converted elements.
     FUNCTION INTERNAL OfLintCount : DINT
         VAR_INPUT
             str: STRING;
@@ -95,4 +96,5 @@ NAMESPACE Simatic.Ax.Conversion.Strings.ToArray
             END_IF;
         END_FOR;
     END_FUNCTION
+
 END_NAMESPACE

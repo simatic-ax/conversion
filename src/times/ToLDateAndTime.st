@@ -1,6 +1,16 @@
 USING System.DateTime;
+
 NAMESPACE Simatic.Ax.Conversion.Times
 
+    /// Converts a SimotionDateTime structure to an LDATE_AND_TIME value.
+    ///
+    /// This function converts a `SimotionDateTime` structure into a Simatic `LDATE_AND_TIME` value.
+    /// The date is calculated based on the number of days since 01.01.1992, and the time is derived
+    /// from the number of milliseconds since midnight.
+    ///
+    /// @param SimotionDateTime The input SimotionDateTime structure.
+    /// @return An LDATE_AND_TIME value representing the input date and time.
+    {axcode:docs-v0:@simatic-ax/conversion:Times.md}
     FUNCTION ToLDateAndTime : LDATE_AND_TIME
 
         VAR_INPUT

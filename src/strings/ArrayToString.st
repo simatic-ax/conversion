@@ -1,6 +1,19 @@
 USING System.Strings;
 
 NAMESPACE Simatic.Ax.Conversion.Arrays
+
+    /// Converts a subset of a character array to a string.
+    /// 
+    /// This function takes a character array and converts a specified range of elements
+    /// (from `startIdx` to `endIdx`) into a string. If the range is invalid or exceeds
+    /// the array bounds, an empty string is returned. The maximum string length is limited
+    /// to `MAX_STR_LEN`.
+    ///
+    /// @param arr The input character array.
+    /// @param startIdx The starting index of the range to convert.
+    /// @param endIdx The ending index of the range to convert.
+    /// @return A string representation of the specified range of the array.
+    {axcode:docs-v0:@simatic-ax/conversion:ArrayToString.md}
     FUNCTION ToString : STRING
         VAR_INPUT
             arr : ARRAY[*] OF CHAR;
@@ -47,6 +60,15 @@ NAMESPACE Simatic.Ax.Conversion.Arrays
 
     END_FUNCTION
 
+    /// Converts an entire character array to a string.
+    ///
+    /// This function takes a character array and converts all its elements into a string.
+    /// If the array length exceeds `MAX_STR_LEN`, the resulting string is truncated to
+    /// the maximum allowed length.
+    ///
+    /// @param arr The input character array.
+    /// @return A string representation of the entire array.
+    {axcode:docs-v0:@simatic-ax/conversion:ArrayToString.md}
     FUNCTION ToString : STRING
         VAR_INPUT
             arr : ARRAY[*] OF CHAR;
@@ -74,4 +96,5 @@ NAMESPACE Simatic.Ax.Conversion.Arrays
         END_FOR;
 
     END_FUNCTION
+
 END_NAMESPACE
