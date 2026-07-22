@@ -10,6 +10,7 @@ NAMESPACE Simatic.Ax.Conversion.Times
     ///
     /// @param SimaticTime The input LDATE_AND_TIME value.
     /// @return A SimotionDateTime structure representing the input date and time.
+    {axcode:docs-v0:@simatic-ax/conversion:Times.md}
     FUNCTION ToSimotionDateTime : SimotionDateTime
         VAR_INPUT
             SimaticTime : LDATE_AND_TIME;

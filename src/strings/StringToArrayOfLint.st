@@ -102,6 +102,7 @@ NAMESPACE Simatic.Ax.Conversion.Strings.ToArray
     /// @param str The input string to analyze.
     /// @param lower The index of the opening bracket.
     /// @param upper The index of the closing bracket.
+    {axcode:docs-v0:@simatic-ax/conversion:StringToArrayOfLint.md}
     FUNCTION GetArrayBounds
         VAR_INPUT
             str: STRING;

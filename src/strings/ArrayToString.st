@@ -13,6 +13,7 @@ NAMESPACE Simatic.Ax.Conversion.Arrays
     /// @param startIdx The starting index of the range to convert.
     /// @param endIdx The ending index of the range to convert.
     /// @return A string representation of the specified range of the array.
+    {axcode:docs-v0:@simatic-ax/conversion:ArrayToString.md}
     FUNCTION ToString : STRING
         VAR_INPUT
             arr : ARRAY[*] OF CHAR;
@@ -67,6 +68,7 @@ NAMESPACE Simatic.Ax.Conversion.Arrays
     ///
     /// @param arr The input character array.
     /// @return A string representation of the entire array.
+    {axcode:docs-v0:@simatic-ax/conversion:ArrayToString.md}
     FUNCTION ToString : STRING
         VAR_INPUT
             arr : ARRAY[*] OF CHAR;

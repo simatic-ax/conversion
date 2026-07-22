@@ -11,6 +11,7 @@ NAMESPACE Simatic.Ax.Conversion.Strings.ToArray
     /// @param str The input string to convert.
     /// @param arr The output array to store the CHAR values.
     /// @return The number of characters copied to the array.
+    {axcode:docs-v0:@simatic-ax/conversion:StringToArrayOfCharCount.md}
     FUNCTION OfCharCount : DINT
         VAR_INPUT
             str : STRING;

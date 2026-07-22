@@ -9,6 +9,7 @@ NAMESPACE Simatic.Ax.Conversion.Strings
     ///
     /// @param str The input string to convert.
     /// @return TRUE if the conversion is successful, FALSE otherwise.
+    {axcode:docs-v0:@simatic-ax/conversion:ToInt.md}
     FUNCTION ToInt : BOOL
         VAR_INPUT
             str : STRING;
@@ -41,6 +42,7 @@ NAMESPACE Simatic.Ax.Conversion.Strings
     ///
     /// @param str The input string to convert.
     /// @return TRUE if the conversion is successful, FALSE otherwise.
+    {axcode:docs-v0:@simatic-ax/conversion:ToInt.md}
     FUNCTION ToInt : BOOL
         VAR_INPUT
             str : STRING;
@@ -73,6 +75,7 @@ NAMESPACE Simatic.Ax.Conversion.Strings
     ///
     /// @param str The input string to convert.
     /// @return TRUE if the conversion is successful, FALSE otherwise.
+    {axcode:docs-v0:@simatic-ax/conversion:ToInt.md}
     FUNCTION ToInt : BOOL
         VAR_INPUT
             str : STRING;
@@ -105,6 +108,7 @@ NAMESPACE Simatic.Ax.Conversion.Strings
     ///
     /// @param str The input string to convert.
     /// @return TRUE if the conversion is successful, FALSE otherwise.
+    {axcode:docs-v0:@simatic-ax/conversion:ToInt.md}
     FUNCTION ToInt : BOOL
         VAR_INPUT
             str : STRING;
@@ -137,6 +141,7 @@ NAMESPACE Simatic.Ax.Conversion.Strings
     ///
     /// @param str The input string to convert.
     /// @return TRUE if the conversion is successful, FALSE otherwise.
+    {axcode:docs-v0:@simatic-ax/conversion:ToInt.md}
     FUNCTION ToInt : BOOL
         VAR_INPUT
             str : STRING;
@@ -169,6 +174,7 @@ NAMESPACE Simatic.Ax.Conversion.Strings
     ///
     /// @param str The input string to convert.
     /// @return TRUE if the conversion is successful, FALSE otherwise.
+    {axcode:docs-v0:@simatic-ax/conversion:ToInt.md}
     FUNCTION ToInt : BOOL
         VAR_INPUT
             str : STRING;
@@ -201,6 +207,7 @@ NAMESPACE Simatic.Ax.Conversion.Strings
     ///
     /// @param str The input string to convert.
     /// @return TRUE if the conversion is successful, FALSE otherwise.
+    {axcode:docs-v0:@simatic-ax/conversion:ToInt.md}
     FUNCTION ToInt : BOOL
         VAR_INPUT
             str : STRING;
@@ -233,6 +240,7 @@ NAMESPACE Simatic.Ax.Conversion.Strings
     ///
     /// @param str The input string to convert.
     /// @return TRUE if the conversion is successful, FALSE otherwise.
+    {axcode:docs-v0:@simatic-ax/conversion:ToInt.md}
     FUNCTION ToInt : BOOL
         VAR_INPUT
             str : STRING;
