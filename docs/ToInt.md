@@ -40,7 +40,7 @@ Provides overloaded `ToInt` functions that parse a `STRING` into signed and unsi
 
 ## Examples
 
-```st
+```iecst
 VAR
 	okSint : BOOL;
 	okUdint : BOOL;

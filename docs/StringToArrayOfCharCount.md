@@ -10,7 +10,7 @@ Converts a `STRING` into an array of `CHAR` values and returns the number of cop
 
 ## Signature
 
-```st
+```iecst
 FUNCTION OfCharCount : DINT
     VAR_INPUT
         str : STRING;
@@ -37,7 +37,7 @@ END_FUNCTION
 
 ## Examples
 
-```st
+```iecst
 VAR
     chars : ARRAY[0..9] OF CHAR;
     copied : DINT;

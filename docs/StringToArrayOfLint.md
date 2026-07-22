@@ -10,7 +10,7 @@ Parses a string representation of an integer array into a `LINT` array.
 
 ## Signatures
 
-```st
+```iecst
 FUNCTION GetArrayBounds
     VAR_INPUT
         str : STRING;
@@ -36,7 +36,7 @@ END_FUNCTION
 
 ## Examples
 
-```st
+```iecst
 VAR
     lowerBound : INT;
     upperBound : INT;

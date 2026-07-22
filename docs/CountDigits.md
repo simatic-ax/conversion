@@ -10,7 +10,7 @@ Provides overloads that count the number of decimal digits in signed and unsigne
 
 ## Signatures
 
-```st
+```iecst
 FUNCTION CountDigits : INT
     VAR_INPUT
         value : LINT;
@@ -39,7 +39,7 @@ END_FUNCTION
 
 ## Examples
 
-```st
+```iecst
 VAR
     signedDigits : INT;
     unsignedDigits : INT;
