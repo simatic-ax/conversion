@@ -37,4 +37,4 @@ files:
   - 'doc'
   - 'bin' # ship library with binaries
 catalogs:
-  "@ax/simatic-ax": ^2504.0.0
+  "@ax/simatic-ax": ^2510.0.0
