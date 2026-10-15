@@ -37,6 +37,7 @@ NAMESPACE Simatic.Ax.Conversion
             Value : REAL;
         END_VAR
         TRUNC := TO_DINT(Value);
+        
         IF Value > 0.0 THEN
             IF TO_LREAL(TRUNC) > Value THEN
                 TRUNC := TRUNC - 1;
