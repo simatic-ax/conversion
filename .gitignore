@@ -6,3 +6,4 @@ obj
 TestResult
 *.tgz
 assets
+out/
